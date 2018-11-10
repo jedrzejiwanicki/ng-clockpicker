@@ -1,0 +1,23 @@
+@import "../../styles/index";
+
+.clock-picker {
+  &__time-display {
+    margin: 40px 0;
+
+    &__button {
+      @include reset-button;
+      @include sizing(50px, 30px);
+
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &__button,
+    &__divider {
+      font-size: 30px;
+    }
+  }
+}

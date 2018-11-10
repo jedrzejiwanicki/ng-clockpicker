@@ -1,0 +1,35 @@
+@import "../../styles/index";
+
+.clock-picker {
+  &__wrapper {
+    @include sizing(300px, 500px);
+    @include fixed(50%, 50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    background-color: #FAFAFA;
+    box-shadow: 1px 2px 30px rgba(0,0,0,0.2);
+  }
+
+  &__overlay {
+    @include sizing(100vw, 100vh);
+    @include fixed(0, 0);
+
+    background-color: rgba(#000, 0.2);
+  }
+
+  &__nav {
+    @include sizing(100%, 40px);
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__close-button {
+    @include reset-button;
+
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,12 @@
+@import "../../styles/index";
+
+
+.clock-picker__circle {
+  &--minutes {
+    @include on-circle(12, 220px, 50px, -90);
+  }
+
+  &--hours {
+    @include on-circle(12, 220px, 50px, -60);
+  }
+}

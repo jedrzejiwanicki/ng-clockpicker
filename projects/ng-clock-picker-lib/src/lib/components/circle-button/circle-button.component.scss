@@ -1,0 +1,14 @@
+@import "../../styles/index";
+
+.clock-picker__item-button {
+  @include reset-button;
+  @include sizing(100%, 100%);
+
+  cursor: pointer;
+  background-color: darken(#FAFAFA, 2);
+  border-radius: 50%;
+
+  &:hover {
+    background-color: darken(#FAFAFA, 3);
+  }
+}

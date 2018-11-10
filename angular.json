@@ -133,6 +133,46 @@
           }
         }
       }
+    },
+    "ng-clock-picker-lib": {
+      "root": "projects/ng-clock-picker-lib",
+      "sourceRoot": "projects/ng-clock-picker-lib/src",
+      "projectType": "library",
+      "prefix": "ng",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-clock-picker-lib/tsconfig.lib.json",
+            "project": "projects/ng-clock-picker-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-clock-picker-lib/src/test.ts",
+            "tsConfig": "projects/ng-clock-picker-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-clock-picker-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-clock-picker-lib/tsconfig.lib.json",
+              "projects/ng-clock-picker-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-clock-picker-lib-app"

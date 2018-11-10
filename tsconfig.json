@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-clock-picker-lib": [
+        "dist/ng-clock-picker-lib"
+      ],
+      "ng-clock-picker-lib/*": [
+        "dist/ng-clock-picker-lib/*"
+      ]
+    }
   }
 }
