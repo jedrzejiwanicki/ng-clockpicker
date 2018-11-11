@@ -21,18 +21,7 @@ export class CircleComponent implements OnInit {
     this.onItemChange.emit(item);
   }
 
-  // @HostListener('mouseup', ['$event'])
-  // onMouseUp(event) {
-  //   this.moveLock = true;
-  // }
-  // @HostListener('mousedown', ['$event'])
-  // onMouseDown(event) {
-  //   this.moveLock = false;
-  // }
-  // @HostListener('mousemove', ['$event'])
-  // onMouseMove(event) {
-  //   if (!this.moveLock) {
-  //     this.event = fromEvent(event);
-  //   }
-  // }
+  handleMovement(event: string) {
+    console.log(event)
+  }
 }
