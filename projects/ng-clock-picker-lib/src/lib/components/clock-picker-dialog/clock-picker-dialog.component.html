@@ -2,28 +2,22 @@
   <div class="clock-picker__overlay">
     <div class="clock-picker__wrapper">
       <nav class="clock-picker__nav">
-        <button
-          (click)="handleClose()"
-          class="clock-picker__close-button"
-        >
-          ✕
-        </button>
+        <ng-time-display
+          [hours]="clockPickerService.selected.hours"
+          [minutes]="clockPickerService.selected.minutes"
+          [isHoursMode]="clockPickerService.isHoursMode"
+          (switch)="handleSwitch($event)"
+        ></ng-time-display>
       </nav>
-      <ng-time-display
-        [hours]="selectedHours"
-        [minutes]="selectedMinutes"
-        (switch)="handleSwitch($event)"
-      ></ng-time-display>
       <ng-circle
         [items]="items"
-        [mode]="mode"
+        [mode]="clockPickerService.mode"
+        (ngMovementEmitter)="handleMovement($event)"
         (onItemChange)="handleItemChange($event)"
       ></ng-circle>
       <footer
         class="clock-picker__footer"
       >
-        <button (click)="setHoursModeAm()">AM</button>
-        <button (click)="setHoursModePm()">PM</button>
       </footer>
     </div>
   </div>

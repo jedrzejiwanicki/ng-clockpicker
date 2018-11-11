@@ -1,6 +1,9 @@
 import { Subject } from "rxjs";
 
 export class VerticalEventHandler {
+  static MovementUp = 'up';
+  static MovementDown = 'down';
+
   previousClientY: number | null = null;
   currentClientY: number | null = null;
   isMoveLocked = true;

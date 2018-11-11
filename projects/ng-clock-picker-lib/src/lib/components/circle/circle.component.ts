@@ -20,8 +20,4 @@ export class CircleComponent implements OnInit {
   handleClick(item: number) {
     this.onItemChange.emit(item);
   }
-
-  handleMovement(event: string) {
-    console.log(event)
-  }
 }

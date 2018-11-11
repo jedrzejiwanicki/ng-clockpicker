@@ -2,8 +2,20 @@
 
 
 .clock-picker__circle {
+  border-radius: 50%;
+  border: 30px solid darken(#FAFAFA, 3);
+  background-color: darken(#FAFAFA, 3);
+
   &--minutes {
-    @include on-circle(12, 220px, 50px, -90);
+    @include on-circle(60, 220px, 50px, -90);
+
+    & > * {
+      display: none;
+
+      &:nth-child(5n + 1) {
+        display: block;
+      }
+    }
   }
 
   &--hours {

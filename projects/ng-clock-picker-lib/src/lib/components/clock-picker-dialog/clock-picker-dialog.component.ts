@@ -1,9 +1,11 @@
 import { Component, ViewEncapsulation, ViewChild, ElementRef} from '@angular/core';
 
 import { DialogComponent } from '../../classes/abstract-dialog';
+import { VerticalEventHandler } from '../../classes/vertical-event-handler'
+import { ClockPickerService } from '../../services/clock-picker.service';
+
 import {
-  hoursConfig,
-  minutesConfig,
+  config,
   MODE_MINUTES,
   MODE_HOURS,
   HOURS_MODE_AM,
@@ -21,58 +23,54 @@ import { enterLeave } from '../../animations/enter-leave';
 })
 
 export class ClockPickerDialogComponent extends DialogComponent {
-  mode = MODE_HOURS;
-  hoursMode = HOURS_MODE_AM;
-  selectedHours = 0;
-  selectedMinutes = 0;
 
-  constructor() { super(); }
 
-  get isHoursMode(): boolean {
-    return this.mode === MODE_HOURS;
-  }
-
-  get isMinutesMode(): boolean {
-    return this.mode === MODE_MINUTES;
-  }
+  constructor(public clockPickerService: ClockPickerService) { super(); }
 
   get items() {
-    return this.isHoursMode
-      ? hoursConfig[this.hoursMode]
-      : minutesConfig;
+    return config[this.clockPickerService.mode];
   }
 
   get fullTime(): string {
-    return getDisplayTime(this.selectedHours, this.selectedMinutes);
+    return this.clockPickerService.fullTime;
   }
 
   handleClose(): void {
     this.close(null);
   }
 
-  setHoursModeAm(): void {
-    this.hoursMode = HOURS_MODE_AM;
-  }
-
-  setHoursModePm(): void {
-    this.hoursMode = HOURS_MODE_PM;
-  }
-
-  setMode(mode: string): void {
-    this.mode = mode;
-  }
-
-  handleItemChange(item: number) {
-    if (this.isHoursMode) {
-      this.selectedHours = item;
-      this.setMode(MODE_MINUTES);
-    } else {
-      this.selectedMinutes = item;
-      this.close(this.fullTime);
+  handleMovement(movement: string) {
+    switch (movement) {
+      case VerticalEventHandler.MovementUp:
+        return this.handleMovementUp();
+      case VerticalEventHandler.MovementDown:
+        return this.handleMovementDown();
     }
   }
 
+  handleMovementUp() {
+    return this.clockPickerService.isHoursMode
+      ? this.clockPickerService.increment(MODE_HOURS)
+      : this.clockPickerService.increment(MODE_MINUTES)
+  }
+
+  handleMovementDown() {
+    return this.clockPickerService.isHoursMode
+      ? this.clockPickerService.decrement(MODE_HOURS)
+      : this.clockPickerService.decrement(MODE_MINUTES)
+  }
+
   handleSwitch(mode: string) {
-    this.setMode(mode);
+    this.clockPickerService.setMode(mode);
+  }
+
+  handleItemChange(item: number) {
+    if (this.clockPickerService.isHoursMode) {
+      this.clockPickerService.setHours(item);
+      this.clockPickerService.setModeToMinutes()
+    } else {
+      this.clockPickerService.setMinutes(item);
+      this.close(this.fullTime);
+    }
   }
 }

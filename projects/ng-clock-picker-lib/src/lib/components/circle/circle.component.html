@@ -1,6 +1,12 @@
-<div [ngClass]="{
-  'clock-picker__circle--minutes': mode === 'minutes',
-  'clock-picker__circle--hours': mode === 'hours'
-}" (ngMovementEmitter)="handleMovement($event)">
-  <ng-circle-button (click)="handleClick(item)" *ngFor="let item of items">{{item}}</ng-circle-button>
+<div
+  class="clock-picker__circle"
+  [ngClass]="{
+    'clock-picker__circle--minutes': mode === 'minutes',
+    'clock-picker__circle--hours': mode === 'hours'
+  }">
+  <ng-circle-button
+    (click)="handleClick(item)"
+    *ngFor="let item of items">
+      {{item}}
+  </ng-circle-button>
 </div>

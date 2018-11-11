@@ -5,10 +5,11 @@
   @include sizing(100%, 100%);
 
   cursor: pointer;
-  background-color: darken(#FAFAFA, 2);
   border-radius: 50%;
+  color: $text-color-default;
 
   &:hover {
     background-color: darken(#FAFAFA, 3);
+    color: $text-color-highlighted;
   }
 }

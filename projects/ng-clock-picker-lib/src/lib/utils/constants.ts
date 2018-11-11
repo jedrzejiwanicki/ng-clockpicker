@@ -1,10 +1,7 @@
-export const hoursConfig = {
-    am: Array(12).fill(0, 0, 12).map((_, i) => i + 1),
-    pm: Array(12).fill(0, 0, 12).map((_, i) => (i + 1) * 2)
+export const config = {
+  hours: Array(12).fill(0, 0, 12).map((_, i) => i + 1),
+  minutes: Array(60).fill(0, 0, 60).map((_, i) => i),
 };
-
-
-export const minutesConfig = Array(12).fill(0, 0, 12).map((_, i) => i * 5);
 
 export const MODE_MINUTES = 'minutes';
 export const MODE_HOURS = 'hours';

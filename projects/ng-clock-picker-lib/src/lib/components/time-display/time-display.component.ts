@@ -12,6 +12,7 @@ import { MODE_HOURS, MODE_MINUTES} from '../../utils/constants';
 export class TimeDisplayComponent {
   @Input() hours: number;
   @Input() minutes: number;
+  @Input() isHoursMode: boolean;
   @Output() switch: EventEmitter<string> = new EventEmitter();
 
   constructor() { }

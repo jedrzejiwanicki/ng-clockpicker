@@ -2,7 +2,13 @@
 
 .clock-picker {
   &__time-display {
-    margin: 40px 0;
+    margin: 20px 0;
+
+    &__button,
+    &__divider {
+      font-size: 30px;
+      color: $text-color-default;
+    }
 
     &__button {
       @include reset-button;
@@ -11,13 +17,12 @@
       cursor: pointer;
 
       &:hover {
-        opacity: 0.8;
+        color: $text-color-highlighted;
       }
-    }
 
-    &__button,
-    &__divider {
-      font-size: 30px;
+      &--selected {
+        color: $text-color-highlighted;
+      }
     }
   }
 }

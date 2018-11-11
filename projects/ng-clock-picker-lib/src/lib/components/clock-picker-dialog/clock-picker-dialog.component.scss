@@ -17,19 +17,14 @@
     @include sizing(100vw, 100vh);
     @include fixed(0, 0);
 
-    background-color: rgba(#000, 0.2);
+    background-color: rgba($background-color-default, 0.6);
   }
 
   &__nav {
-    @include sizing(100%, 40px);
+    @include sizing(100%, 70px);
+    @include flex-centered;
 
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  &__close-button {
-    @include reset-button;
-
-    cursor: pointer;
+    margin-bottom: 10px;
+    background-color: $background-color-default;
   }
 }
