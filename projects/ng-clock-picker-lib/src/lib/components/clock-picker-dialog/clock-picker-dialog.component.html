@@ -1,23 +1,15 @@
-<div [ngClass]="className">
+<div [ngClass]="wrapperClassName">
   <div class="clock-picker__overlay">
     <div class="clock-picker__wrapper">
       <nav class="clock-picker__nav">
-        <ng-time-display
-          [hours]="clockPickerService.selected.hours"
-          [minutes]="clockPickerService.selected.minutes"
-          [isHoursMode]="clockPickerService.isHoursMode"
-          (switch)="handleSwitch($event)"
-        ></ng-time-display>
+        <ng-time-display></ng-time-display>
       </nav>
       <ng-circle
-        [items]="items"
-        [mode]="clockPickerService.mode"
         (ngMovementEmitter)="handleMovement($event)"
         (onItemChange)="handleItemChange($event)"
       ></ng-circle>
-      <footer
-        class="clock-picker__footer"
-      >
+      <footer class="clock-picker__footer">
+
       </footer>
     </div>
   </div>

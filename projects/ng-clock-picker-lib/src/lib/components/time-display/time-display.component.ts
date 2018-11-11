@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 import { convertToTimeFormat } from '../../utils/time';
 import { MODE_HOURS, MODE_MINUTES} from '../../utils/constants';
+import { ClockPickerService } from '../../services/clock-picker.service';
 
 @Component({
   selector: 'ng-time-display',
@@ -10,26 +11,26 @@ import { MODE_HOURS, MODE_MINUTES} from '../../utils/constants';
   encapsulation: ViewEncapsulation.None,
 })
 export class TimeDisplayComponent {
-  @Input() hours: number;
-  @Input() minutes: number;
-  @Input() isHoursMode: boolean;
-  @Output() switch: EventEmitter<string> = new EventEmitter();
 
-  constructor() { }
+  constructor(public clockPickerService: ClockPickerService) { }
 
   get displayHours(): string {
-    return convertToTimeFormat(this.hours);
+    return convertToTimeFormat(this.clockPickerService.selected.hours);
   }
 
   get displayMinutes(): string {
-    return convertToTimeFormat(this.minutes);
+    return convertToTimeFormat(this.clockPickerService.selected.minutes);
+  }
+
+  get isHoursMode(): boolean {
+    return this.clockPickerService.isHoursMode;
   }
 
   handleMinutesClick(): void {
-    this.switch.emit(MODE_MINUTES);
+    this.clockPickerService.setMode(MODE_MINUTES);
   }
 
   handleHoursClick(): void {
-    this.switch.emit(MODE_HOURS);
+    this.clockPickerService.setMode(MODE_HOURS);
   }
 }

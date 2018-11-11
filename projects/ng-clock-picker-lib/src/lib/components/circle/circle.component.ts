@@ -1,5 +1,7 @@
-import {Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, HostListener } from '@angular/core';
-import { fromEvent } from "rxjs";
+import { Component, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+
+import { ClockPickerService } from '../../services/clock-picker.service';
+import { config } from '../../utils/constants';
 
 @Component({
   selector: 'ng-circle',
@@ -7,14 +9,13 @@ import { fromEvent } from "rxjs";
   styleUrls: ['./circle.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CircleComponent implements OnInit {
-  @Input() items: Array<number>;
-  @Input() mode: string;
+export class CircleComponent {
   @Output() onItemChange: EventEmitter<number> = new EventEmitter();
-  moveLock = true;
-  constructor() { }
 
-  ngOnInit() {
+  constructor(public clockPickerService: ClockPickerService) { }
+
+  get items(): Array<number> {
+    return config[this.clockPickerService.mode];
   }
 
   handleClick(item: number) {

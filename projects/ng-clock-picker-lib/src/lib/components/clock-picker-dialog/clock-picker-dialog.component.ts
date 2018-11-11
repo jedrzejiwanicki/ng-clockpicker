@@ -11,7 +11,6 @@ import {
   HOURS_MODE_AM,
   HOURS_MODE_PM,
 } from '../../utils/constants';
-import { getDisplayTime } from '../../utils/time';
 import { enterLeave } from '../../animations/enter-leave';
 
 @Component({
@@ -58,10 +57,6 @@ export class ClockPickerDialogComponent extends DialogComponent {
     return this.clockPickerService.isHoursMode
       ? this.clockPickerService.decrement(MODE_HOURS)
       : this.clockPickerService.decrement(MODE_MINUTES)
-  }
-
-  handleSwitch(mode: string) {
-    this.clockPickerService.setMode(mode);
   }
 
   handleItemChange(item: number) {

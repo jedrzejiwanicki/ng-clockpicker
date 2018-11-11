@@ -1,4 +1,4 @@
-import { Directive, HostListener, EventEmitter, Output, OnInit } from '@angular/core';
+import { Directive, HostListener, EventEmitter, Output, OnInit, Component } from '@angular/core';
 import { Subject, merge } from 'rxjs';
 
 import { VerticalEventHandler } from '../classes/vertical-event-handler';

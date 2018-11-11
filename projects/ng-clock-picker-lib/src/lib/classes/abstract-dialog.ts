@@ -2,7 +2,10 @@ export abstract class DialogComponent {
 
   constructor() { }
 
-  className: string;
+  wrapperClassName: string;
+  buttonClose?: string;
+  buttonConfirm?: string;
+
   close(data: any): void {}
 
 }

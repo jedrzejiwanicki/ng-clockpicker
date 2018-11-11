@@ -1,8 +1,8 @@
 <div
   class="clock-picker__circle"
   [ngClass]="{
-    'clock-picker__circle--minutes': mode === 'minutes',
-    'clock-picker__circle--hours': mode === 'hours'
+    'clock-picker__circle--minutes': clockPickerService.isMinutesMode,
+    'clock-picker__circle--hours': clockPickerService.isHoursMode
   }">
   <ng-circle-button
     (click)="handleClick(item)"

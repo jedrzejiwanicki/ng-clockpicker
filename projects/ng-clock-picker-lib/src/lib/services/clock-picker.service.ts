@@ -5,9 +5,21 @@ import { getDisplayTime } from '../utils/time';
 
 @Injectable()
 export class ClockPickerService {
-  mode = MODE_HOURS;
-  hoursMode = HOURS_MODE_AM;
-  selected = { hours: 0, minutes: 0 };
+  _mode = MODE_HOURS;
+  _hoursMode = HOURS_MODE_AM;
+  _selected = { hours: 0, minutes: 0 };
+
+  get mode() {
+    return this._mode;
+  }
+
+  get hoursMode() {
+    return this._hoursMode;
+  }
+
+  get selected() {
+    return this._selected;
+  }
 
   get isHoursMode(): boolean {
     return this.mode === MODE_HOURS;
@@ -26,7 +38,7 @@ export class ClockPickerService {
     const nextIndex = currentIndex + 1;
     const nextValue = config[mode][nextIndex];
 
-    this.selected[mode] = nextValue || 0;
+    this._selected[mode] = nextValue || 0;
   }
 
   decrement(mode: string) {
@@ -34,15 +46,15 @@ export class ClockPickerService {
     const nextIndex = currentIndex - 1;
     const nextValue = config[mode][nextIndex];
 
-    this.selected[mode] = nextValue || config[mode][config[mode].length - 1];
+    this._selected[mode] = nextValue || config[mode][config[mode].length - 1];
   }
 
   setHours(item: number) {
-    this.selected.hours = item;
+    this._selected.hours = item;
   }
 
   setMinutes(item: number) {
-    this.selected.minutes = item;
+    this._selected.minutes = item;
   }
 
   handleSwitch(mode: string) {
@@ -50,7 +62,11 @@ export class ClockPickerService {
   }
 
   setMode(mode: string): void {
-    this.mode = mode;
+    this._mode = mode;
+  }
+
+  setHoursMode(mode: string): void {
+    this._hoursMode = mode;
   }
 
   setModeToMinutes(): void {
