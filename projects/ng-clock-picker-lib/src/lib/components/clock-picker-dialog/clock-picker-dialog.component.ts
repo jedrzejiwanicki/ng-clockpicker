@@ -11,13 +11,11 @@ import {
   HOURS_MODE_AM,
   HOURS_MODE_PM,
 } from '../../utils/constants';
-import { enterLeave } from '../../animations/enter-leave';
 
 @Component({
   selector: 'ng-clock-picker-dialog',
   templateUrl: './clock-picker-dialog.component.html',
   styleUrls: ['./clock-picker-dialog.component.scss'],
-  animations: [enterLeave],
   encapsulation: ViewEncapsulation.None,
 })
 
