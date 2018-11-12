@@ -1,13 +1,19 @@
 {
   "name": "ng-clock-picker-lib-app",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "copy-license": "cp ./LICENSE ./dist/ng-clock-picker-lib/",
+    "copy-readme": "cp ./README.md ./dist/ng-clock-picker-lib/",
+    "copy-files": "npm run copy-license && npm run copy-readme",
+    "build_library": "ng build ng-clock-picker-lib",
+    "npm_pack": "cd dist/ng-clock-picker-lib && npm pack",
+    "package": "npm run build_library && npm run npm_pack && npm run copy-files"
   },
   "private": true,
   "dependencies": {
