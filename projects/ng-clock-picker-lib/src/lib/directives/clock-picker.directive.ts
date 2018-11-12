@@ -19,8 +19,11 @@ export class ClockPickerDirective extends AbstractValueAccessor {
   @Input() ngClockPickerConfig: ClockPickerConfig;
   @Output() ngClockPickerChange: EventEmitter<string> = new EventEmitter<string>();
 
-  @HostListener('focus')
-  onFocus(): void {
+  @HostListener('focus', ['$event'])
+  onFocus(event): void {
+    event.preventDefault();
+    this.elementRef.nativeElement.blur();
+
     this.clockPickerDialogService
       .showClockPickerDialog(this.ngClockPickerConfig)
       .subscribe((data: string) => {

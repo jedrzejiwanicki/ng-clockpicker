@@ -3,8 +3,7 @@ export function convertToTimeFormat(value: number): string {
 }
 
 export function getTime(hours: number, minutes: number, mode: string): string {
-  const timeString = ` ${hours}:${minutes} ${mode}`;
-  const date = new Date(new Date().toISOString().split('T')[0] + timeString);
+  const date = new Date(`10/10/1970 ${hours}:${minutes} ${mode}`);
 
   return date.toLocaleTimeString([], {
     hour: '2-digit',

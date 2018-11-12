@@ -3,14 +3,15 @@
 .clock-picker {
   &__wrapper {
     @include sizing(300px, auto);
-    @include fixed(50%, 50%);
+    @include absolute(50%, 50%);
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #fff;
     transform: translate(-50%, -50%);
     box-shadow: 1px 2px 30px rgba(0,0,0,0.2);
-  }
+  };
 
   &__overlay {
     @include sizing(100vw, 100vh);

@@ -1,4 +1,4 @@
-import { Directive, HostListener, EventEmitter, Output, OnInit, Component } from '@angular/core';
+import { Directive, HostListener, EventEmitter, Output, OnInit } from '@angular/core';
 import { Subject, merge } from 'rxjs';
 
 import { VerticalEventHandler } from '../classes/vertical-event-handler';
@@ -18,7 +18,7 @@ export class MovementEmitterDirective implements OnInit {
   @HostListener('mousedown', ['$event']) onMouseDown(event) { this.mouseDown$.next(event); }
   @HostListener('mouseup', ['$event']) onMouseUp(event) { this.mouseUp$.next(event); }
   @HostListener('mousemove', ['$event']) onMouseMove(event) { this.mouseMove$.next(event); }
-  @HostListener('touchmove', ['$event']) onTouchMove(event) { this.touchMove$.next(event); }
+  @HostListener('touchmove', ['$event']) onTouchMove(event) { event.preventDefault(); this.touchMove$.next(event); }
 
   constructor() { }
 
