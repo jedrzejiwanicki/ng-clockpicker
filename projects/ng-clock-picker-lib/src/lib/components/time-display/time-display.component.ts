@@ -26,6 +26,10 @@ export class TimeDisplayComponent {
     return this.clockPickerService.isHoursMode;
   }
 
+  get hoursMode(): string {
+    return this.clockPickerService.hoursMode;
+  }
+
   handleMinutesClick(): void {
     this.clockPickerService.setMode(MODE_MINUTES);
   }

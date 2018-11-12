@@ -1,0 +1,22 @@
+@import "../../styles/index";
+
+.clock-picker__hours-mode-panel {
+  position: relative;
+  height: 19px;
+  overflow: hidden;
+
+  &__scrollable {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__button {
+    @include reset-button;
+    @include sizing(auto, 19px);
+
+    cursor: pointer;
+    margin: 0 5px;
+    font: $font-small;
+    color: $text-color-default;
+  }
+}

@@ -2,17 +2,30 @@
 
 .clock-picker {
   &__time-display {
+    @include flex-centered;
+
     margin: 20px 0;
 
     &__button,
-    &__divider {
-      font-size: 30px;
+    &__divider,
+    &__hours-mode {
+      font: $font-regular;
       color: $text-color-default;
+    }
+
+    &__button,
+    &__divider {
+      font: $font-large;
+    }
+
+    &__hours-mode {
+      margin: 0 5px;
+      font: $font-big;
     }
 
     &__button {
       @include reset-button;
-      @include sizing(50px, 30px);
+      @include sizing(auto, 30px);
 
       cursor: pointer;
 

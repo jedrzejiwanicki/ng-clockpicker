@@ -1,3 +1,6 @@
-<button class="clock-picker__item-button">
+<button
+  class="clock-picker__item-button"
+  [ngClass]="{'clock-picker__item-button--selected': selected}"
+>
   <ng-content></ng-content>
 </button>

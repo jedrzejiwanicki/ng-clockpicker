@@ -23,8 +23,10 @@ export class ClockPickerDirective extends AbstractValueAccessor {
     this.dynamicComponentsService
       .load(ClockPickerDialogComponent, this.viewContainerRef, this.config)
       .subscribe((data: string) => {
-        this.elementRef.nativeElement.value = data;
-        this.onChange(data);
+        if (data) {
+          this.elementRef.nativeElement.value = data;
+          this.onChange(data);
+        }
       });
   }
 }

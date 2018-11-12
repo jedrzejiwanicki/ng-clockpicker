@@ -6,6 +6,7 @@
     'clock-picker__circle--hours': clockPickerService.isHoursMode
   }">
   <ng-circle-button
+    [selected]="isSelected(item)"
     (click)="handleClick(item)"
     *ngFor="let item of items">
       {{item}}

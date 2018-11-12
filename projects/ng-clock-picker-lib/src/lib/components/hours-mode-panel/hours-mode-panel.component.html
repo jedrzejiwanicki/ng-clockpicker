@@ -1,0 +1,9 @@
+<div class="clock-picker__hours-mode-panel">
+  <div [@hoursModeSlide]="hoursMode" class="clock-picker__hours-mode-panel__scrollable">
+    <button
+      *ngFor="let option of hoursModeOptions"
+      (click)="toggleMode()"
+      class="clock-picker__hours-mode-panel__button"
+    >{{option.toLowerCase()}}</button>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ViewChild, ElementRef} from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 import { DialogComponent } from '../../classes/abstract-dialog';
 import { VerticalEventHandler } from '../../classes/vertical-event-handler'
@@ -8,8 +8,6 @@ import {
   config,
   MODE_MINUTES,
   MODE_HOURS,
-  HOURS_MODE_AM,
-  HOURS_MODE_PM,
 } from '../../utils/constants';
 
 @Component({
@@ -19,9 +17,7 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 
-export class ClockPickerDialogComponent extends DialogComponent {
-
-
+export class ClockPickerDialogComponent extends DialogComponent implements OnDestroy {
   constructor(public clockPickerService: ClockPickerService) { super(); }
 
   get items() {
@@ -33,7 +29,11 @@ export class ClockPickerDialogComponent extends DialogComponent {
   }
 
   handleClose(): void {
-    this.close(null);
+    this.close(this.fullTime);
+  }
+
+  cancel(): void {
+    this.close(null); //
   }
 
   handleMovement(movement: string) {
@@ -48,22 +48,26 @@ export class ClockPickerDialogComponent extends DialogComponent {
   handleMovementUp() {
     return this.clockPickerService.isHoursMode
       ? this.clockPickerService.increment(MODE_HOURS)
-      : this.clockPickerService.increment(MODE_MINUTES)
+      : this.clockPickerService.increment(MODE_MINUTES);
   }
 
   handleMovementDown() {
     return this.clockPickerService.isHoursMode
       ? this.clockPickerService.decrement(MODE_HOURS)
-      : this.clockPickerService.decrement(MODE_MINUTES)
+      : this.clockPickerService.decrement(MODE_MINUTES);
   }
 
   handleItemChange(item: number) {
     if (this.clockPickerService.isHoursMode) {
       this.clockPickerService.setHours(item);
-      this.clockPickerService.setModeToMinutes()
+      this.clockPickerService.setModeToMinutes();
     } else {
       this.clockPickerService.setMinutes(item);
       this.close(this.fullTime);
     }
+  }
+
+  ngOnDestroy() {
+    this.clockPickerService.reset();
   }
 }

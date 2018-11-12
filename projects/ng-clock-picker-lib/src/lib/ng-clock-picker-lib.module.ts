@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ClockPickerDirective } from './directives/clock-picker.directive';
 import { DynamicComponentsService } from './services/dynamic-components.service';
@@ -10,6 +10,7 @@ import { CircleButtonComponent } from './components/circle-button/circle-button.
 import { TimeDisplayComponent } from './components/time-display/time-display.component';
 import { MovementEmitterDirective } from './directives/movement-emitter.directive';
 import { ClockPickerService } from './services/clock-picker.service';
+import { HoursModePanelComponent } from './components/hours-mode-panel/hours-mode-panel.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ClockPickerService } from './services/clock-picker.service';
     CircleComponent,
     CircleButtonComponent,
     TimeDisplayComponent,
-    MovementEmitterDirective
+    MovementEmitterDirective,
+    HoursModePanelComponent
   ],
   imports: [CommonModule, BrowserAnimationsModule],
   exports: [ClockPickerDirective],

@@ -9,7 +9,18 @@
         (onItemChange)="handleItemChange($event)"
       ></ng-circle>
       <footer class="clock-picker__footer">
-
+        <button
+          class="clock-picker__footer__dialog-control-button"
+          (click)="cancel()"
+        >
+          {{buttonClose}}
+        </button>
+        <button
+          class="clock-picker__footer__dialog-control-button"
+          (click)="handleClose()"
+        >
+          {{buttonConfirm}}
+        </button>
       </footer>
     </div>
   </div>

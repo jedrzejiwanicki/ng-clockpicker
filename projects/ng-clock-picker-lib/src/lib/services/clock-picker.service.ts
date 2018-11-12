@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 
 import { config, HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES } from '../utils/constants';
-import { getDisplayTime } from '../utils/time';
+import { getDisplayTime, parseTime } from '../utils/time';
+import { SelectedTime } from '../interfaces';
 
 @Injectable()
 export class ClockPickerService {
   _mode = MODE_HOURS;
   _hoursMode = HOURS_MODE_AM;
-  _selected = { hours: 0, minutes: 0 };
+  _selected: SelectedTime = { hours: 12, minutes: 0 };
 
-  get mode() {
+  get mode(): string {
     return this._mode;
   }
 
-  get hoursMode() {
+  get hoursMode(): string {
     return this._hoursMode;
   }
 
-  get selected() {
+  get selected(): SelectedTime {
     return this._selected;
   }
 
@@ -30,10 +31,18 @@ export class ClockPickerService {
   }
 
   get fullTime(): string {
+    console.log(this.hoursMode);
     return getDisplayTime(this.selected.hours, this.selected.minutes, this.hoursMode);
   }
 
-  increment(mode: string) {
+  reset(): void {
+    this.setHoursMode(HOURS_MODE_AM);
+    this.setMode(MODE_HOURS);
+    this.setHours(12);
+    this.setMinutes(0);
+  }
+
+  increment(mode: string): void {
     const currentIndex = config[mode].indexOf(this.selected[mode]);
     const nextIndex = currentIndex + 1;
     const nextValue = config[mode][nextIndex];
@@ -41,7 +50,7 @@ export class ClockPickerService {
     this._selected[mode] = nextValue || 0;
   }
 
-  decrement(mode: string) {
+  decrement(mode: string): void {
     const currentIndex = config[mode].indexOf(this.selected[mode]);
     const nextIndex = currentIndex - 1;
     const nextValue = config[mode][nextIndex];
@@ -49,15 +58,15 @@ export class ClockPickerService {
     this._selected[mode] = nextValue || config[mode][config[mode].length - 1];
   }
 
-  setHours(item: number) {
+  setHours(item: number): void {
     this._selected.hours = item;
   }
 
-  setMinutes(item: number) {
+  setMinutes(item: number): void {
     this._selected.minutes = item;
   }
 
-  handleSwitch(mode: string) {
+  handleSwitch(mode: string): void {
     this.setMode(mode);
   }
 

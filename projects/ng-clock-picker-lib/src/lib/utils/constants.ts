@@ -5,5 +5,5 @@ export const config = {
 
 export const MODE_MINUTES = 'minutes';
 export const MODE_HOURS = 'hours';
-export const HOURS_MODE_AM = 'am';
-export const HOURS_MODE_PM = 'pm';
+export const HOURS_MODE_AM = 'AM';
+export const HOURS_MODE_PM = 'PM';

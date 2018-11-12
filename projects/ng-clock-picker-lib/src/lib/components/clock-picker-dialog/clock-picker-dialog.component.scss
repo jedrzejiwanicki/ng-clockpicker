@@ -2,7 +2,7 @@
 
 .clock-picker {
   &__wrapper {
-    @include sizing(300px, 500px);
+    @include sizing(300px, auto);
     @include fixed(50%, 50%);
 
     display: flex;
@@ -20,11 +20,36 @@
     background-color: rgba($background-color-default, 0.6);
   }
 
-  &__nav {
+  &__nav,
+  &__footer {
     @include sizing(100%, 70px);
+
+    background-color: $background-color-default;
+  }
+
+  &__nav {
     @include flex-centered;
 
     margin-bottom: 10px;
+  }
+
+  &__footer {
+
+    box-sizing: border-box;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 10px;
     background-color: $background-color-default;
+
+    &__dialog-control-button {
+      @include reset-button;
+
+      cursor: pointer;
+      padding: 5px;
+      font: $font-regular;
+      color: $text-color-default;
+    }
   }
 }

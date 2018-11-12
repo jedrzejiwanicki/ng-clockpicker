@@ -3,6 +3,7 @@ import { Component, Output, EventEmitter, ViewEncapsulation } from '@angular/cor
 import { ClockPickerService } from '../../services/clock-picker.service';
 import { scaleIn } from '../../animations/scale-in';
 import { config } from '../../utils/constants';
+import { SelectedTime } from '../../interfaces';
 
 @Component({
   selector: 'ng-circle',
@@ -22,6 +23,14 @@ export class CircleComponent {
 
   get mode(): string {
     return this.clockPickerService.mode;
+  }
+
+  get selected(): SelectedTime {
+    return this.clockPickerService.selected;
+  }
+
+  isSelected(item: number): boolean {
+    return this.selected[this.mode] === item;
   }
 
   handleClick(item: number) {
