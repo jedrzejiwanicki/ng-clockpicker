@@ -1,9 +1,9 @@
-##Install
+## Install
 
 `npm i ng-clock-picker-lib --save`
 
 
-##Usage
+## Usage
 
 Add `NgClockPickerLibModule` to your module imports:
 
