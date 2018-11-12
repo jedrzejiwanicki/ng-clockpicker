@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,6 +11,7 @@ import { TimeDisplayComponent } from './components/time-display/time-display.com
 import { MovementEmitterDirective } from './directives/movement-emitter.directive';
 import { ClockPickerService } from './services/clock-picker.service';
 import { HoursModePanelComponent } from './components/hours-mode-panel/hours-mode-panel.component';
+import { ClockPickerDialogService } from './services/clock-picker-dialog.service';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,19 @@ import { HoursModePanelComponent } from './components/hours-mode-panel/hours-mod
     CircleButtonComponent,
     TimeDisplayComponent,
     MovementEmitterDirective,
-    HoursModePanelComponent
+    HoursModePanelComponent,
   ],
   imports: [CommonModule, BrowserAnimationsModule],
   exports: [ClockPickerDirective],
-  providers: [DynamicComponentsService, ClockPickerService],
+  providers: [DynamicComponentsService, ClockPickerService, ClockPickerDialogService],
   entryComponents: [ClockPickerDialogComponent],
 })
-export class NgClockPickerLibModule { }
+
+export class NgClockPickerLibModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: NgClockPickerLibModule,
+      providers: [ClockPickerDialogService]
+    };
+  }
+}

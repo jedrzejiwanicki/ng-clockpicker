@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { config, HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES } from '../utils/constants';
+import { config, HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES, defaults } from '../utils/constants';
 import { getDisplayTime, parseTime } from '../utils/time';
 import { SelectedTime } from '../interfaces';
 
@@ -31,7 +31,6 @@ export class ClockPickerService {
   }
 
   get fullTime(): string {
-    console.log(this.hoursMode);
     return getDisplayTime(this.selected.hours, this.selected.minutes, this.hoursMode);
   }
 
@@ -47,7 +46,7 @@ export class ClockPickerService {
     const nextIndex = currentIndex + 1;
     const nextValue = config[mode][nextIndex];
 
-    this._selected[mode] = nextValue || 0;
+    this._selected[mode] = nextValue || config[mode][0];
   }
 
   decrement(mode: string): void {

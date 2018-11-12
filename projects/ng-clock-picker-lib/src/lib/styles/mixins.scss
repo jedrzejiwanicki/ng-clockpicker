@@ -43,12 +43,23 @@
   height: $height;
 }
 
-@mixin fixed($top:auto, $left:auto, $bottom:auto, $right: auto) {
-  position: fixed;
+@mixin position($top, $left, $bottom, $right) {
   top: $top;
   right: $right;
   bottom: $bottom;
   left: $left;
+}
+
+@mixin fixed($top:auto, $left:auto, $bottom:auto, $right: auto) {
+  @include position($top, $left, $bottom, $right);
+
+  position: fixed;
+}
+
+@mixin absolute($top:auto, $left:auto, $bottom:auto, $right: auto) {
+  @include position($top, $left, $bottom, $right);
+
+  position: absolute;
 }
 
 @mixin reset-button() {

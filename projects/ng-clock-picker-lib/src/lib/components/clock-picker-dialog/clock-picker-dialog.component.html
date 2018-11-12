@@ -1,27 +1,26 @@
 <div [ngClass]="wrapperClassName">
-  <div class="clock-picker__overlay">
-    <div class="clock-picker__wrapper">
-      <nav class="clock-picker__nav">
-        <ng-time-display></ng-time-display>
-      </nav>
-      <ng-circle
-        (ngMovementEmitter)="handleMovement($event)"
-        (onItemChange)="handleItemChange($event)"
-      ></ng-circle>
-      <footer class="clock-picker__footer">
-        <button
-          class="clock-picker__footer__dialog-control-button"
-          (click)="cancel()"
-        >
-          {{buttonClose}}
-        </button>
-        <button
-          class="clock-picker__footer__dialog-control-button"
-          (click)="handleClose()"
-        >
-          {{buttonConfirm}}
-        </button>
-      </footer>
-    </div>
+  <div class="clock-picker__overlay" (click)="handleOverlayClick($event)"></div>
+  <div class="clock-picker__wrapper">
+    <nav class="clock-picker__nav">
+      <ng-time-display></ng-time-display>
+    </nav>
+    <ng-circle
+      (ngMovementEmitter)="handleMovement($event)"
+      (onItemChange)="handleItemChange($event)"
+    ></ng-circle>
+    <footer class="clock-picker__footer">
+      <button
+        class="clock-picker__footer__dialog-control-button"
+        (click)="cancel()"
+      >
+        {{buttonClose}}
+      </button>
+      <button
+        class="clock-picker__footer__dialog-control-button"
+        (click)="handleClose()"
+      >
+        {{buttonConfirm}}
+      </button>
+    </footer>
   </div>
 </div>

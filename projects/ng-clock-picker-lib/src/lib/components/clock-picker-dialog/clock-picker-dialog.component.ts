@@ -36,6 +36,14 @@ export class ClockPickerDialogComponent extends DialogComponent implements OnDes
     this.close(null); //
   }
 
+  handleOverlayClick(event: Event): void {
+    event.stopPropagation();
+
+    if (this.closeOnOverlayClick) {
+      this.cancel();
+    }
+  }
+
   handleMovement(movement: string) {
     switch (movement) {
       case VerticalEventHandler.MovementUp:

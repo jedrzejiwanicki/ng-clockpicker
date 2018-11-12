@@ -3,9 +3,9 @@ export abstract class DialogComponent {
   constructor() { }
 
   wrapperClassName: string;
-  buttonClose?: string = 'close';
-  buttonConfirm?: string = 'confirm';
-
+  buttonClose = 'close';
+  buttonConfirm = 'confirm';
+  closeOnOverlayClick = false;
   close(data: any): void {}
 
 }

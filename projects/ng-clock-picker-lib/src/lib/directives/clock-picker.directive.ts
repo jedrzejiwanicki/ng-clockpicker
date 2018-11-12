@@ -4,6 +4,7 @@ import { ClockPickerDialogComponent } from '../components/clock-picker-dialog/cl
 import { DynamicComponentsService } from '../services/dynamic-components.service';
 import { AbstractValueAccessor } from '../classes/abstract-value-accessor';
 import { DialogConfig } from '../interfaces';
+import { ClockPickerDialogService } from '../services/clock-picker-dialog.service';
 
 @Directive({
   selector: '[ngClockPicker]',
@@ -13,21 +14,25 @@ export class ClockPickerDirective extends AbstractValueAccessor {
   constructor(
     private elementRef: ElementRef,
     private viewContainerRef: ViewContainerRef,
-    private dynamicComponentsService: DynamicComponentsService,
+    private clockPickerDialogService: ClockPickerDialogService,
   ) { super(); }
 
   @Input() config: DialogConfig;
 
   @HostListener('focus')
   onFocus(): void {
-    this.dynamicComponentsService
-      .load(ClockPickerDialogComponent, this.viewContainerRef, this.config)
+    this.clockPickerDialogService
+      .showClockPickerDialog(this.config)
       .subscribe((data: string) => {
         if (data) {
           this.elementRef.nativeElement.value = data;
           this.onChange(data);
         }
       });
+  }
+
+  ngOnInit(): void {
+    this.clockPickerDialogService.registerViewContainerRef(this.viewContainerRef);
   }
 }
 

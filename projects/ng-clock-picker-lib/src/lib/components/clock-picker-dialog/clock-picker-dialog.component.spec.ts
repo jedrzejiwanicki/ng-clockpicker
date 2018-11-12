@@ -6,6 +6,8 @@ import { MockClockPickerService } from '../../tests/mocks';
 import { TimeDisplayComponent } from '../time-display/time-display.component';
 import { CircleComponent } from '../circle/circle.component';
 import { CircleButtonComponent } from '../circle-button/circle-button.component';
+import { HoursModePanelComponent } from '../hours-mode-panel/hours-mode-panel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ClockPickerDialogComponent', () => {
   let component: ClockPickerDialogComponent;
@@ -13,7 +15,8 @@ describe('ClockPickerDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClockPickerDialogComponent, TimeDisplayComponent, CircleComponent, CircleButtonComponent ],
+      imports: [BrowserAnimationsModule],
+      declarations: [ ClockPickerDialogComponent, TimeDisplayComponent, CircleComponent, CircleButtonComponent, HoursModePanelComponent ],
       providers: [{ provide: ClockPickerService, useClass: MockClockPickerService }]
     })
     .compileComponents();

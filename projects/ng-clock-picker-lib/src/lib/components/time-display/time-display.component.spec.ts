@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TimeDisplayComponent } from './time-display.component';
 import { ClockPickerService } from '../../services/clock-picker.service';
 import { MockClockPickerService } from '../../tests/mocks';
+import { HoursModePanelComponent } from '../hours-mode-panel/hours-mode-panel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TimeDisplayComponent', () => {
   let component: TimeDisplayComponent;
@@ -10,7 +12,8 @@ describe('TimeDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimeDisplayComponent ],
+      imports: [BrowserAnimationsModule],
+      declarations: [ TimeDisplayComponent, HoursModePanelComponent ],
       providers: [ { provide: ClockPickerService, useClass: MockClockPickerService }]
     })
     .compileComponents();

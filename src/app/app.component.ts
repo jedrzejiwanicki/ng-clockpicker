@@ -1,6 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
-
+import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ClockPickerDialogService } from 'ng-clock-picker-lib';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,11 +9,14 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 })
 export class AppComponent {
   abc;
+  config = { wrapperClassName: 'xcd', closeOnOverlayClick: true };
   form: FormGroup = this.formBuilder.group({ time: [''] });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private vcr: ViewContainerRef, private formBuilder: FormBuilder, private s: ClockPickerDialogService) {}
 
   ngOnInit() {
+    this.s.registerViewContainerRef(this.vcr);
+    this.s.showClockPickerDialog({ wrapperClassName: 'x' }).subscribe(a => console.log(a))
     this.form.valueChanges.subscribe(value => console.log(this.abc));
   }
 }
