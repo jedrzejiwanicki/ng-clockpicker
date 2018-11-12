@@ -44,51 +44,52 @@ describe('ClockPickerService', () => {
   }));
 
   it('returns correct fullTime', async(() => {
-    expect(service.fullTime).toBe('12:00 AM');
+    expect(service.fullTime).toBe('12:00');
   }));
 
   it('returns correct fullTime after updated hours', async(() => {
     service.setHours(4);
 
-    expect(service.fullTime).toBe('04:00 AM');
+    expect(service.fullTime).toBe('04:00');
   }));
 
 
   it('returns correct fullTime after updated minutes', async(() => {
     service.setMinutes(14);
+    service.setHoursMode(HOURS_MODE_PM);
 
-    expect(service.fullTime).toBe('12:14 AM');
+    expect(service.fullTime).toBe('00:14');
   }));
 
 
   it('returns correct fullTime after updated hours mode', async(() => {
     service.setHoursMode(HOURS_MODE_PM);
 
-    expect(service.fullTime).toBe('12:00 PM');
+    expect(service.fullTime).toBe('00:00');
   }));
 
   it('increments hours correctly', async(() => {
     service.increment(MODE_HOURS);
 
-    expect(service.fullTime).toBe('01:00 AM');
+    expect(service.fullTime).toBe('01:00');
   }));
 
   it('decrements hours correctly', async(() => {
     service.decrement(MODE_HOURS);
 
-    expect(service.fullTime).toBe('11:00 AM');
+    expect(service.fullTime).toBe('11:00');
   }));
 
   it('increments minutes correctly', async(() => {
     service.setMinutes(59);
     service.increment(MODE_MINUTES);
 
-    expect(service.fullTime).toBe('12:00 AM');
+    expect(service.fullTime).toBe('12:00');
   }));
 
   it('decrements minutes correctly', async(() => {
     service.decrement(MODE_MINUTES);
 
-    expect(service.fullTime).toBe('12:59 AM');
+    expect(service.fullTime).toBe('12:59');
   }));
 });

@@ -1,14 +1,16 @@
+import { HOURS_MODE_PM } from './constants';
+
 export function convertToTimeFormat(value: number): string {
   return value < 10 ? `0${value}` : value.toString();
 }
 
 export function getTime(hours: number, minutes: number, mode: string): string {
-  const date = new Date(`10/10/1970 ${hours}:${minutes} ${mode}`);
+  const date = new Date();
 
-  return date.toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  date.setHours(mode === HOURS_MODE_PM ? hours + 12 : hours);
+  date.setMinutes(minutes);
+
+  return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
 export function getDisplayTime(hours: number, minutes: number, mode: string): string {

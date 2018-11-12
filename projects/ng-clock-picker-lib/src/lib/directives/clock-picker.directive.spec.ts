@@ -4,8 +4,10 @@ import { By } from '@angular/platform-browser';
 
 import { ClockPickerDirective } from './clock-picker.directive';
 import { DynamicComponentsService } from '../services/dynamic-components.service';
-import { MockElementRef, MockDynamicComponentsService } from '../tests/mocks';
+import { MockElementRef, MockClockPickerDialogService } from '../tests/mocks';
 import { ClockPickerDialogComponent } from '../components/clock-picker-dialog/clock-picker-dialog.component';
+import { ClockPickerDialogService } from '../services/clock-picker-dialog.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ng-test-component',
@@ -26,7 +28,7 @@ describe('ClockPickerDirective', () => {
       providers: [
         { provide: ElementRef, useClass: MockElementRef },
         ViewContainerRef,
-        { provide: DynamicComponentsService, useClass: MockDynamicComponentsService}
+        { provide: ClockPickerDialogService, useClass: MockClockPickerDialogService },
       ],
     })
       .compileComponents();
@@ -42,24 +44,22 @@ describe('ClockPickerDirective', () => {
     expect(directive).toBeTruthy();
   }));
 
-  it('input should trigger dynamicComponentsService.load', async(() => {
-    const dynamicComponentsService = TestBed.get(DynamicComponentsService);
+  it('input should trigger clockPickerDialogService.showClockPickerDialog', async(() => {
+    const clockPickerDialogService = TestBed.get(ClockPickerDialogService);
     const input = fixture.debugElement.query(By.css('#input')).nativeElement;
-    const load = spyOn(dynamicComponentsService, 'load');
+    const showClockPickerDialog = spyOn(clockPickerDialogService, 'showClockPickerDialog');
 
     input.dispatchEvent(new Event('focus'));
 
-    expect(load).toHaveBeenCalledWith(
-      ClockPickerDialogComponent,
-      directiveInstance.viewContainerRef,
+    expect(showClockPickerDialog).toHaveBeenCalledWith(
       directiveInstance.config,
     );
   }));
 
   it('should set new value to input', async(() => {
-    const dynamicComponentsService = TestBed.get(DynamicComponentsService);
+    const showClockPickerDialog = TestBed.get(ClockPickerDialogService);
     const input = fixture.debugElement.query(By.css('#input')).nativeElement;
-    const load = spyOn(dynamicComponentsService, 'load').and.callThrough();
+    const load = spyOn(showClockPickerDialog, 'showClockPickerDialog').and.callThrough();
 
     input.dispatchEvent(new Event('focus'));
 

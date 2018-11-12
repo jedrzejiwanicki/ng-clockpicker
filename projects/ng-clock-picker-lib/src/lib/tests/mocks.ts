@@ -11,8 +11,9 @@ export class MockElementRef {
 }
 
 @Injectable()
-export class MockDynamicComponentsService {
-  load(): Observable<string> { return new Observable(s => s.next('value')); }
+export class MockClockPickerDialogService {
+  registerViewContainerRef(): void {};
+  showClockPickerDialog(): Observable<string> { return new Observable(s => s.next('value')); }
 }
 
 @Injectable()
