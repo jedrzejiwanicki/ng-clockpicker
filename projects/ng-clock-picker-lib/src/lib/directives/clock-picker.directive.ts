@@ -17,12 +17,12 @@ export class ClockPickerDirective extends AbstractValueAccessor {
     private clockPickerDialogService: ClockPickerDialogService,
   ) { super(); }
 
-  @Input() config: DialogConfig;
+  @Input() ngClockPickerConfig: DialogConfig;
 
   @HostListener('focus')
   onFocus(): void {
     this.clockPickerDialogService
-      .showClockPickerDialog(this.config)
+      .showClockPickerDialog(this.ngClockPickerConfig)
       .subscribe((data: string) => {
         if (data) {
           this.elementRef.nativeElement.value = data;
