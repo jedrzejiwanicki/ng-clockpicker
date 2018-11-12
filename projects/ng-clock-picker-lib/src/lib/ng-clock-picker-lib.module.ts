@@ -29,11 +29,4 @@ import { ClockPickerDialogService } from './services/clock-picker-dialog.service
   entryComponents: [ClockPickerDialogComponent],
 })
 
-export class NgClockPickerLibModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: NgClockPickerLibModule,
-      providers: [ClockPickerDialogService]
-    };
-  }
-}
+export class NgClockPickerLibModule { }
