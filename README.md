@@ -1,3 +1,7 @@
+## Demo 
+
+![Demo gif](https://giphy.com/gifs/CjUSTAGel0hLaJwxDc)
+
 ## Install
 
 `npm i ng-clock-picker-lib --save`

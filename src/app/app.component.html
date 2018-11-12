@@ -1,9 +1,8 @@
 <form [formGroup]="form">
   <input
+    class="input"
     formControlName="time"
-    placeholder="xcfegre"
+    placeholder="Time"
     ngClockPicker
     [ngClockPickerConfig]="config"/>
 </form>
-
-<input [(ngModel)]="abc" (ngClockPickerChange)="handleChange($event)" type="time" placeholder="xcfegre" ngClockPicker />
