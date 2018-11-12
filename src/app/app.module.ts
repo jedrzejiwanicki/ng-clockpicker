@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgClockPickerLibModule, ClockPickerDialogService } from 'ng-clock-picker-lib';
 
 import { AppComponent } from './app.component';
+
+import { NgClockPickerLibModule } from 'ng-clock-picker-lib';
 
 @NgModule({
   declarations: [
@@ -11,11 +12,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    NgClockPickerLibModule.forRoot(),
+    NgClockPickerLibModule,
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [ClockPickerDialogService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

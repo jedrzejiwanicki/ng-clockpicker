@@ -10,7 +10,7 @@ Add `NgClockPickerLibModule` to your module imports:
 ```typescript
  import { BrowserModule } from '@angular/platform-browser';
  import { NgModule } from '@angular/core';
- import { NgClockPickerLibModule, ClockPickerDialogService } from 'ng-clock-picker-lib';
+ import { NgClockPickerLibModule } from 'ng-clock-picker-lib';
  
  import { AppComponent } from './app.component';
  
@@ -20,11 +20,11 @@ Add `NgClockPickerLibModule` to your module imports:
    ],
    imports: [
      BrowserModule,
-     NgClockPickerLibModule.forRoot(),
+     NgClockPickerLibModule,
      ReactiveFormsModule,
      FormsModule,
    ],
-   providers: [ClockPickerDialogService],
+   providers: [],
    bootstrap: [AppComponent]
  })
  export class AppModule { }
