@@ -1,6 +1,9 @@
 ## Demo 
 
-![Demo gif](https://giphy.com/gifs/CjUSTAGel0hLaJwxDc)
+<p align="center">
+  <img src="https://media.giphy.com/media/CjUSTAGel0hLaJwxDc/giphy.gif">
+</p>
+
 
 ## Install
 
