@@ -1,7 +1,6 @@
-import { Directive, Input, HostListener, ViewContainerRef, ElementRef, forwardRef } from '@angular/core';
+import { Directive, Input, HostListener, ViewContainerRef, ElementRef, forwardRef, EventEmitter, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ClockPickerDialogComponent } from '../components/clock-picker-dialog/clock-picker-dialog.component';
-import { DynamicComponentsService } from '../services/dynamic-components.service';
+
 import { AbstractValueAccessor } from '../classes/abstract-value-accessor';
 import { DialogConfig } from '../interfaces';
 import { ClockPickerDialogService } from '../services/clock-picker-dialog.service';
@@ -18,6 +17,7 @@ export class ClockPickerDirective extends AbstractValueAccessor {
   ) { super(); }
 
   @Input() ngClockPickerConfig: DialogConfig;
+  @Output() ngClockPickerChange: EventEmitter<string> = new EventEmitter<string>();
 
   @HostListener('focus')
   onFocus(): void {
@@ -27,6 +27,7 @@ export class ClockPickerDirective extends AbstractValueAccessor {
         if (data) {
           this.elementRef.nativeElement.value = data;
           this.onChange(data);
+          this.ngClockPickerChange.emit(data);
         }
       });
   }

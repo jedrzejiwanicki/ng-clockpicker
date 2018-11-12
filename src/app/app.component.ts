@@ -20,4 +20,8 @@ export class AppComponent {
     this.s.showClockPickerDialog({ wrapperClassName: 'x' }).subscribe(a => console.log(a))
     this.form.valueChanges.subscribe(value => console.log(this.abc));
   }
+
+  handleChange(event: string) {
+    console.log({event})
+  }
 }

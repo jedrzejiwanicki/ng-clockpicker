@@ -6,4 +6,4 @@
     [ngClockPickerConfig]="config"/>
 </form>
 
-<input [(ngModel)]="abc" type="time" placeholder="xcfegre" ngClockPicker />
+<input [(ngModel)]="abc" (ngClockPickerChange)="handleChange($event)" type="time" placeholder="xcfegre" ngClockPicker />
