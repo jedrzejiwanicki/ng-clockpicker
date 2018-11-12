@@ -2,7 +2,7 @@ import { Directive, Input, HostListener, ViewContainerRef, ElementRef, forwardRe
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { AbstractValueAccessor } from '../classes/abstract-value-accessor';
-import { DialogConfig } from '../interfaces';
+import { ClockPickerConfig } from '../interfaces';
 import { ClockPickerDialogService } from '../services/clock-picker-dialog.service';
 
 @Directive({
@@ -16,7 +16,7 @@ export class ClockPickerDirective extends AbstractValueAccessor {
     private clockPickerDialogService: ClockPickerDialogService,
   ) { super(); }
 
-  @Input() ngClockPickerConfig: DialogConfig;
+  @Input() ngClockPickerConfig: ClockPickerConfig;
   @Output() ngClockPickerChange: EventEmitter<string> = new EventEmitter<string>();
 
   @HostListener('focus')

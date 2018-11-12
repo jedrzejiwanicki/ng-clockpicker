@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ClockPickerDialogService, DialogConfig } from 'ng-clock-picker-lib';
+import { ClockPickerDialogService, ClockPickerConfig } from 'ng-clock-picker-lib';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { ClockPickerDialogService, DialogConfig } from 'ng-clock-picker-lib';
 })
 export class AppComponent {
   abc;
-  config: DialogConfig = { wrapperClassName: 'xcd', closeOnOverlayClick: true };
+  config: ClockPickerConfig = { wrapperClassName: 'xcd', closeOnOverlayClick: true };
   form: FormGroup = this.formBuilder.group({ time: [''] });
 
   constructor(private vcr: ViewContainerRef, private formBuilder: FormBuilder, private s: ClockPickerDialogService) {}

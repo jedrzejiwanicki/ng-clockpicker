@@ -1,9 +1,8 @@
-export interface DialogConfig {
+export interface ClockPickerConfig {
   wrapperClassName: string;
   buttonCancel?: string;
   buttonConfirm?: string;
   closeOnOverlayClick?: boolean;
-  value?: string;
 }
 
 export interface SelectedTime {

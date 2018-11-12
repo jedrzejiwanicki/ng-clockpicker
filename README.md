@@ -43,11 +43,16 @@ Add `NgClockPickerLibModule` to your module imports:
 <input [(ngModel)]="time" ngClockPicker [ngClockPickerConfig]="config" />
 ```
 
+#### With event binding:
+```angular2html
+<input ngClockPicker (ngClockPickerChange)="handleTimeChange($event)" />
+```
+
 #### By injecting service straight into component:
 
 ```typescript
 import { Component, ViewContainerRef } from '@angular/core';
-import { ClockPickerDialogService, DialogConfig } from 'ng-clock-picker-lib';
+import { ClockPickerDialogService, ClockPickerConfig } from 'ng-clock-picker-lib';
 
 @Component({
   selector: 'app-root',
@@ -55,7 +60,7 @@ import { ClockPickerDialogService, DialogConfig } from 'ng-clock-picker-lib';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  config: DialogConfig = { 
+  config: ClockPickerConfig = { 
     wrapperClassName: 'className', 
     closeOnOverlayClick: true 
   };
@@ -72,4 +77,14 @@ export class AppComponent {
   }
 }
 
+```
+
+### Config:
+```typescript
+export interface ClockPickerConfig {
+  wrapperClassName: string;
+  buttonCancel?: string;
+  buttonConfirm?: string;
+  closeOnOverlayClick?: boolean;
+}
 ```

@@ -4,4 +4,4 @@
 
 export * from './lib/ng-clock-picker-lib.module';
 export * from './lib/services/clock-picker-dialog.service';
-export { DialogConfig } from './lib/interfaces';
+export { ClockPickerConfig } from './lib/interfaces';
