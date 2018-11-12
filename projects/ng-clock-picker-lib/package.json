@@ -3,6 +3,8 @@
   "version": "0.0.4",
   "license": "MIT",
   "keywords": ["angular", "time", "picker", "time-picker", "clock", "clock-picker"],
+  "homepage": "https://jedrzejiwanicki.github.io/ng-clockpicker/",
+  "repository": "https://github.com/jedrzejiwanicki/ng-clockpicker",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0"
