@@ -12,7 +12,7 @@
   border-radius: 50%;
   list-style: none;
 
-  > * {
+  ng-circle-button  {
     @include flex-centered;
 
     position: absolute;

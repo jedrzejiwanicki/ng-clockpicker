@@ -5,10 +5,11 @@
     'clock-picker__circle--minutes': clockPickerService.isMinutesMode,
     'clock-picker__circle--hours': clockPickerService.isHoursMode
   }">
+  <ng-clock-face></ng-clock-face>
   <ng-circle-button
     [selected]="isSelected(item)"
     (click)="handleClick(item)"
     *ngFor="let item of items">
-      {{item}}
+    {{item}}
   </ng-circle-button>
 </div>

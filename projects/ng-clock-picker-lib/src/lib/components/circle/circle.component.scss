@@ -1,6 +1,5 @@
 @import "../../styles/index";
 
-
 .clock-picker__circle {
   border-radius: 50%;
   border: 30px solid darken(#FAFAFA, 3);
@@ -9,10 +8,10 @@
   &--minutes {
     @include on-circle(60, 220px, 50px, -90);
 
-    & > * {
+    ng-circle-button {
       display: none;
 
-      &:nth-child(5n + 1) {
+      &:nth-child(5n + 2) {
         display: block;
       }
     }

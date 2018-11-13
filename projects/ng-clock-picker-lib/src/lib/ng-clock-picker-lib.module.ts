@@ -12,6 +12,7 @@ import { MovementEmitterDirective } from './directives/movement-emitter.directiv
 import { ClockPickerService } from './services/clock-picker.service';
 import { HoursModePanelComponent } from './components/hours-mode-panel/hours-mode-panel.component';
 import { ClockPickerDialogService } from './services/clock-picker-dialog.service';
+import { ClockFaceComponent } from './components/clock-face/clock-face.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ClockPickerDialogService } from './services/clock-picker-dialog.service
     TimeDisplayComponent,
     MovementEmitterDirective,
     HoursModePanelComponent,
+    ClockFaceComponent,
   ],
   imports: [CommonModule, BrowserAnimationsModule],
   exports: [ClockPickerDirective],

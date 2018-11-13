@@ -8,6 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "build-pages": "ng build --prod --base-href 'https://jedrzejiwanicki.github.io/ng-clockpicker/'",
+    "deploy-pages": "ngh --dir dist/ng-clock-picker-lib-app",
     "copy-license": "cp ./LICENSE ./dist/ng-clock-picker-lib/",
     "copy-readme": "cp ./README.md ./dist/ng-clock-picker-lib/",
     "copy-files": "npm run copy-license && npm run copy-readme",

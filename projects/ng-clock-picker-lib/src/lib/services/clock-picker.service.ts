@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import { config, HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES, defaults } from '../utils/constants';
-import { getDisplayTime, parseTime } from '../utils/time';
 import { SelectedTime } from '../interfaces';
+import { Time } from '../classes/Time';
 
 @Injectable()
 export class ClockPickerService {
   _mode = MODE_HOURS;
   _hoursMode = HOURS_MODE_AM;
-  _selected: SelectedTime = { hours: 12, minutes: 0 };
+  _time: Time = new Time({ hours: 12, minutes: 0 });
 
   get mode(): string {
     return this._mode;
@@ -19,7 +19,7 @@ export class ClockPickerService {
   }
 
   get selected(): SelectedTime {
-    return this._selected;
+    return this._time.selected;
   }
 
   get isHoursMode(): boolean {
@@ -31,7 +31,7 @@ export class ClockPickerService {
   }
 
   get fullTime(): string {
-    return getDisplayTime(this.selected.hours, this.selected.minutes, this.hoursMode);
+    return this._time.getDisplayTime(this.hoursMode);
   }
 
   reset(): void {
@@ -42,27 +42,23 @@ export class ClockPickerService {
   }
 
   increment(mode: string): void {
-    const currentIndex = config[mode].indexOf(this.selected[mode]);
-    const nextIndex = currentIndex + 1;
-    const nextValue = config[mode][nextIndex];
-
-    this._selected[mode] = nextValue || config[mode][0];
+    return mode === MODE_MINUTES
+      ? this._time.incrementMinutes()
+      : this._time.incrementHours();
   }
 
   decrement(mode: string): void {
-    const currentIndex = config[mode].indexOf(this.selected[mode]);
-    const nextIndex = currentIndex - 1;
-    const nextValue = config[mode][nextIndex];
-
-    this._selected[mode] = nextValue || config[mode][config[mode].length - 1];
+    return mode === MODE_MINUTES
+      ? this._time.decrementMinutes()
+      : this._time.decrementHours();
   }
 
   setHours(item: number): void {
-    this._selected.hours = item;
+    this._time.hours = item;
   }
 
   setMinutes(item: number): void {
-    this._selected.minutes = item;
+    this._time.minutes = item;
   }
 
   handleSwitch(mode: string): void {

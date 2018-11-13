@@ -1,0 +1,19 @@
+@import "../../styles/index";
+
+.clock-picker__clock-face {
+  @include absolute(50%, 50%);
+
+  transform: translate(-50%,-50%);
+  margin: 0;
+  width: 180px;
+  height: 180px;
+
+  &__tick {
+    stroke: white;
+    stroke-width: 2;
+  }
+
+  &__center {
+    fill: white;
+  }
+}
