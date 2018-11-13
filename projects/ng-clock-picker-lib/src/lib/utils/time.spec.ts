@@ -1,6 +1,7 @@
 import { async } from '@angular/core/testing';
 
 import { convertToTimeFormat, getTime } from './time';
+import { getDateStringFromTime } from '../tests/utils';
 
 describe('convertToTimeFormat', () => {
   it('returns correct values', async(() => {
@@ -14,9 +15,9 @@ describe('convertToTimeFormat', () => {
 
 describe('getTime', () => {
   it('returns correct values', async(() => {
-    expect(getTime(10, 10, 'PM')).toBe('22:10');
-    expect(getTime(10, 10, 'AM')).toBe('10:10');
-    expect(getTime(5, 20, 'PM')).toBe('17:20');
-    expect(getTime(5, 10, 'AM')).toBe('05:10');
+    expect(getDateStringFromTime(getTime(10, 10, 'PM'))).toBe(getDateStringFromTime('22:10'));
+    expect(getDateStringFromTime(getTime(10, 10, 'AM'))).toBe(getDateStringFromTime('10:10'));
+    expect(getDateStringFromTime(getTime(5, 20, 'PM'))).toBe(getDateStringFromTime('17:20'));
+    expect(getDateStringFromTime(getTime(5, 10, 'AM'))).toBe(getDateStringFromTime('05:10'));
   }));
 });

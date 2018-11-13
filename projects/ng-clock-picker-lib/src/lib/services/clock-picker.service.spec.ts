@@ -2,10 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 
 import { MODE_HOURS, MODE_MINUTES, HOURS_MODE_AM, HOURS_MODE_PM } from '../utils/constants';
 import { ClockPickerService } from './clock-picker.service';
-
-function getDateStringFromTime(time: string): string {
-  return new Date(`11-11-11 ${time}`).toISOString();
-}
+import { getDateStringFromTime } from '../tests/utils';
 
 describe('ClockPickerService', () => {
   let service: ClockPickerService;
