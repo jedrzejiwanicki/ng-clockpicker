@@ -36,4 +36,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test ng-clock-picker-lib --single-run
+      - run: yarn test ng-clock-picker-lib --watch=false
