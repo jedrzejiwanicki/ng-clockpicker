@@ -9,6 +9,7 @@ import { CircleButtonComponent } from '../circle-button/circle-button.component'
 import { HoursModePanelComponent } from '../hours-mode-panel/hours-mode-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClockFaceComponent } from '../clock-face/clock-face.component';
+import { SwipeControlComponent } from '../swipe-control/swipe-control.component';
 
 describe('ClockPickerDialogComponent', () => {
   let component: ClockPickerDialogComponent;
@@ -24,6 +25,7 @@ describe('ClockPickerDialogComponent', () => {
         CircleButtonComponent,
         HoursModePanelComponent,
         ClockFaceComponent,
+        SwipeControlComponent,
       ],
       providers: [{ provide: ClockPickerService, useClass: MockClockPickerService }]
     })

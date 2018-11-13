@@ -14,8 +14,4 @@ export class AppComponent {
 
   constructor(private vcr: ViewContainerRef, private formBuilder: FormBuilder, private s: ClockPickerDialogService) {}
 
-  ngOnInit() {
-    this.form.valueChanges.subscribe(value => console.log(this.abc));
-  }
-
 }

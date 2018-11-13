@@ -1,9 +1,5 @@
 @import "../../styles/index";
 
-:host {
-  z-index: 10;
-};
-
 .clock-picker__item-button {
   @include reset-button;
   @include sizing(100%, 100%);

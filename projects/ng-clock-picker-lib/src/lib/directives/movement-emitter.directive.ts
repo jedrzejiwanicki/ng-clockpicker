@@ -12,7 +12,7 @@ export class MovementEmitterDirective implements OnInit {
   mouseMove$:  Subject<MouseEvent> = new Subject<MouseEvent>();
   touchMove$: Subject<TouchEvent> = new Subject<TouchEvent>();
 
-  verticalEventHandler = new VerticalEventHandler();
+  verticalEventHandler: VerticalEventHandler = new VerticalEventHandler();
 
   @Output() ngMovementEmitter: EventEmitter<string> = new EventEmitter<string>();
   @HostListener('mousedown', ['$event']) onMouseDown(event) { this.mouseDown$.next(event); }

@@ -10,10 +10,11 @@
 
     ng-circle-button {
 
-      &:not(:nth-child(5n + 2)) {
+      &:not(:nth-child(5n + 3)) {
         width: 4px;
         height: 4px;
         margin: -2px;
+        z-index: 2;
 
         .clock-picker__item-button {
           color: transparent;
@@ -26,4 +27,12 @@
   &--hours {
     @include on-circle(12, 220px, 50px, -60);
   }
+}
+
+
+.svg {
+  @include absolute(50%, 50%);
+  @include sizing(280px, 280px);
+
+  transform: translate(-50%,-50%);
 }

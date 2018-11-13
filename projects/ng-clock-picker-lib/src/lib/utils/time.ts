@@ -16,9 +16,3 @@ export function getTime(hours: number, minutes: number, mode: string): string {
 export function getDisplayTime(hours: number, minutes: number, mode: string): string {
   return getTime(hours, minutes, mode);
 }
-
-export function parseTime(value: string): number[] {
-  return value
-    .split(':')
-    .map(item => Number(item));
-}

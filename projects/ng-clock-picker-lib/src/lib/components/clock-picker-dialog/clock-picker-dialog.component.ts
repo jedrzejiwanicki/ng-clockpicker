@@ -1,13 +1,10 @@
 import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 import { DialogComponent } from '../../classes/abstract-dialog';
-import { VerticalEventHandler } from '../../classes/vertical-event-handler';
 import { ClockPickerService } from '../../services/clock-picker.service';
 
 import {
   config,
-  MODE_MINUTES,
-  MODE_HOURS,
 } from '../../utils/constants';
 
 @Component({
@@ -42,27 +39,6 @@ export class ClockPickerDialogComponent extends DialogComponent implements OnDes
     if (this.closeOnOverlayClick) {
       this.cancel();
     }
-  }
-
-  handleMovement(movement: string) {
-    switch (movement) {
-      case VerticalEventHandler.MovementUp:
-        return this.handleMovementUp();
-      case VerticalEventHandler.MovementDown:
-        return this.handleMovementDown();
-    }
-  }
-
-  handleMovementUp() {
-    return this.clockPickerService.isHoursMode
-      ? this.clockPickerService.decrement(MODE_HOURS)
-      : this.clockPickerService.decrement(MODE_MINUTES);
-  }
-
-  handleMovementDown() {
-    return this.clockPickerService.isHoursMode
-      ? this.clockPickerService.increment(MODE_HOURS)
-      : this.clockPickerService.increment(MODE_MINUTES);
   }
 
   handleItemChange(item: number) {
