@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { config, HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES, defaults } from '../utils/constants';
+import { HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES } from '../utils/constants';
 import { SelectedTime } from '../interfaces';
 import { Time } from '../classes/Time';
 

@@ -19,7 +19,9 @@ export class DynamicComponentsService {
 
 
     for (const key in config) {
-      (<T>componentRef.instance)[key] = config[key];
+      if (config.hasOwnProperty(key)) {
+        (<T>componentRef.instance)[key] = config[key];
+      }
     }
 
     (<T>componentRef.instance).close = (data: any) => {

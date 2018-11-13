@@ -1,4 +1,4 @@
-import { Subject } from "rxjs";
+import { Subject } from 'rxjs';
 
 export class VerticalEventHandler {
   static MovementUp = 'up';

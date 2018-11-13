@@ -20,8 +20,8 @@ export interface CentralPointCoordinates {
   y1: number;
 }
 
-export interface ClockFaceItem extends CentralPointCoordinates{
+export interface ClockFaceItem extends CentralPointCoordinates {
   y2: number;
   x2: number;
   display: number;
-};
+}

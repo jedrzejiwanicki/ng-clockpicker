@@ -12,7 +12,7 @@ export class MockElementRef {
 
 @Injectable()
 export class MockClockPickerDialogService {
-  registerViewContainerRef(): void {};
+  registerViewContainerRef(): void {}
   showClockPickerDialog(): Observable<string> { return new Observable(s => s.next('value')); }
 }
 

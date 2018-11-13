@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 import { DialogComponent } from '../../classes/abstract-dialog';
-import { VerticalEventHandler } from '../../classes/vertical-event-handler'
+import { VerticalEventHandler } from '../../classes/vertical-event-handler';
 import { ClockPickerService } from '../../services/clock-picker.service';
 
 import {

@@ -13,7 +13,7 @@ import { SelectedTime } from '../../interfaces';
   encapsulation: ViewEncapsulation.None,
 })
 export class CircleComponent {
-  @Output() onItemChange: EventEmitter<number> = new EventEmitter();
+  @Output() itemChange: EventEmitter<number> = new EventEmitter();
 
   constructor(public clockPickerService: ClockPickerService) { }
 
@@ -34,6 +34,6 @@ export class CircleComponent {
   }
 
   handleClick(item: number) {
-    this.onItemChange.emit(item);
+    this.itemChange.emit(item);
   }
 }

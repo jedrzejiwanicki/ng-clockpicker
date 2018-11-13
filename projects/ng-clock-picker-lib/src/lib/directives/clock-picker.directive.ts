@@ -1,4 +1,4 @@
-import { Directive, Input, HostListener, ViewContainerRef, ElementRef, forwardRef, EventEmitter, Output } from '@angular/core';
+import { Directive, Input, HostListener, ViewContainerRef, ElementRef, forwardRef, EventEmitter, Output, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { AbstractValueAccessor } from '../classes/abstract-value-accessor';
@@ -9,7 +9,7 @@ import { ClockPickerDialogService } from '../services/clock-picker-dialog.servic
   selector: '[ngClockPicker]',
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ClockPickerDirective), multi: true }],
 })
-export class ClockPickerDirective extends AbstractValueAccessor {
+export class ClockPickerDirective extends AbstractValueAccessor implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private viewContainerRef: ViewContainerRef,
