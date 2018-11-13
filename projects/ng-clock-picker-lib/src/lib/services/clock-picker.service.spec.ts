@@ -3,6 +3,10 @@ import { TestBed, async } from '@angular/core/testing';
 import { MODE_HOURS, MODE_MINUTES, HOURS_MODE_AM, HOURS_MODE_PM } from '../utils/constants';
 import { ClockPickerService } from './clock-picker.service';
 
+function getDateStringFromTime(time: string): string {
+  return new Date(`11-11-11 ${time}`).toISOString();
+}
+
 describe('ClockPickerService', () => {
   let service: ClockPickerService;
 
@@ -44,13 +48,13 @@ describe('ClockPickerService', () => {
   }));
 
   it('returns correct fullTime', async(() => {
-    expect(service.fullTime).toBe('12:00');
+    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('12:00'));
   }));
 
   it('returns correct fullTime after updated hours', async(() => {
     service.setHours(4);
 
-    expect(service.fullTime).toBe('04:00');
+    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('04:00'));
   }));
 
 
@@ -58,38 +62,38 @@ describe('ClockPickerService', () => {
     service.setMinutes(14);
     service.setHoursMode(HOURS_MODE_PM);
 
-    expect(service.fullTime).toBe('00:14');
+    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('00:14'));
   }));
 
 
   it('returns correct fullTime after updated hours mode', async(() => {
     service.setHoursMode(HOURS_MODE_PM);
 
-    expect(service.fullTime).toBe('00:00');
+    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('00:00'));
   }));
 
   it('increments hours correctly', async(() => {
     service.increment(MODE_HOURS);
 
-    expect(service.fullTime).toBe('01:00');
+    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('01:00'));
   }));
 
   it('decrements hours correctly', async(() => {
     service.decrement(MODE_HOURS);
 
-    expect(service.fullTime).toBe('11:00');
+    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('11:00'));
   }));
 
   it('increments minutes correctly', async(() => {
     service.setMinutes(59);
     service.increment(MODE_MINUTES);
 
-    expect(service.fullTime).toBe('12:00');
+    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('12:00'));
   }));
 
   it('decrements minutes correctly', async(() => {
     service.decrement(MODE_MINUTES);
 
-    expect(service.fullTime).toBe('12:59');
+    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('12:59'));
   }));
 });
