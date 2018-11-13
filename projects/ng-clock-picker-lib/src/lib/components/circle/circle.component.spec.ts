@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CircleComponent } from './circle.component';
 import { ClockPickerService } from '../../services/clock-picker.service';
-import { MockClockPickerService } from '../../tests/mocks';
 import { CircleButtonComponent } from '../circle-button/circle-button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClockFaceComponent } from '../clock-face/clock-face.component';
 
 describe('CircleComponent', () => {
   let component: CircleComponent;
@@ -13,7 +13,7 @@ describe('CircleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ BrowserAnimationsModule ],
-      declarations: [ CircleComponent, CircleButtonComponent ],
+      declarations: [ CircleComponent, CircleButtonComponent, ClockFaceComponent ],
       providers: [ClockPickerService]
     })
     .compileComponents();
@@ -30,12 +30,12 @@ describe('CircleComponent', () => {
   }));
 
   it('handleClick should trigger event to be emitted', async(() => {
-    const onItemChange = jasmine.createSpyObj('onItemChange', ['emit']);
+    const itemChange = jasmine.createSpyObj('itemChange', ['emit']);
 
-    component.onItemChange = onItemChange;
+    component.itemChange = itemChange;
     component.handleClick(11);
 
-    expect(onItemChange.emit).toHaveBeenCalled();
+    expect(itemChange.emit).toHaveBeenCalled();
   }));
 
   it('should render 12 buttons', async(() => {

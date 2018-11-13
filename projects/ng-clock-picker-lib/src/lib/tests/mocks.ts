@@ -13,6 +13,7 @@ export class MockElementRef {
 @Injectable()
 export class MockClockPickerDialogService {
   registerViewContainerRef(): void {}
+  reset(): void {}
   showClockPickerDialog(): Observable<string> { return new Observable(s => s.next('value')); }
 }
 
@@ -20,5 +21,6 @@ export class MockClockPickerDialogService {
 export class MockClockPickerService {
   get isHoursMode(): boolean { return false; }
   get mode(): string { return MODE_HOURS; }
+  setMode(m: string): void {}
   get selected(): SelectedTime { return { hours: 10, minutes: 1 }; }
 }
