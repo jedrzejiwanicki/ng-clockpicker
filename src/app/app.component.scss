@@ -1,24 +1,21 @@
-.input {
-  font-size: 16px;
-}
+section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-$color-primary: teal;
-$color-text-light: white;
+  h1 {
+    font-family: sans-serif;
+  }
 
-.my-class-name .clock-picker__item-button--selected {
-  background-color: $color-primary;
-  color: $color-text-light;
-}
-
-.my-class-name .clock-picker__item-button--selected:hover {
-  background-color: $color-primary;
-  color: $color-text-light;
-}
-
-.my-class-name .clock-picker__clock-face .clock-picker__clock-face__tick {
-  stroke: $color-primary;
-}
-
-.my-class-name .clock-picker__clock-face .clock-picker__clock-face__center {
-  fill: $color-primary;
+  input {
+    width: 300px;
+    height: 30px;
+    border-color: #458aff;
+    border-style: solid;
+    text-align: center;
+    padding: 0;
+  }
 }

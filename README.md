@@ -1,9 +1,11 @@
-## Demo 
-
 <p align="center">
   <img src="https://media.giphy.com/media/65K5OtNGknogxzoYsf/giphy.gif">
 </p>
 
+
+## Demo 
+
+[Demo](http://jedrzejiwanicki.github.io/ng-clockpicker)
 
 ## Install
 

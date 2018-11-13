@@ -1,6 +1,6 @@
 {
   "name": "ng-clock-picker-lib",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "license": "MIT",
   "keywords": ["angular", "time", "picker", "time-picker", "clock", "clock-picker"],
   "homepage": "https://jedrzejiwanicki.github.io/ng-clockpicker/",

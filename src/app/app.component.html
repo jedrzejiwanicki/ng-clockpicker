@@ -1,11 +1,12 @@
-<form [formGroup]="form">
-  <input
-    readonly="true"
-    class="input"
-    type="time"
-    formControlName="time"
-    placeholder="Time"
-    ngClockPicker
-    [ngClockPickerConfig]="config"/>
-</form>
+<section>
+  <img src="assets/icon.svg" alt="">
+  <h1>NgClockPicker</h1>
+  <form [formGroup]="form">
+    <input
+      formControlName="time"
+      placeholder="Pick time"
+      ngClockPicker
+      [ngClockPickerConfig]="config"/>
+  </form>
+</section>
 
