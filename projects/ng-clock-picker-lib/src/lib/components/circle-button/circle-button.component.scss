@@ -12,6 +12,7 @@
   cursor: pointer;
   border-radius: 50%;
   font: $font-regular;
+  user-select: none;
   color: $text-color-default;
 
   &:hover {

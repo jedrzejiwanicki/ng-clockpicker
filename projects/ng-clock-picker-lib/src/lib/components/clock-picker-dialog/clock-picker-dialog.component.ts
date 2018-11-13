@@ -55,14 +55,14 @@ export class ClockPickerDialogComponent extends DialogComponent implements OnDes
 
   handleMovementUp() {
     return this.clockPickerService.isHoursMode
-      ? this.clockPickerService.increment(MODE_HOURS)
-      : this.clockPickerService.increment(MODE_MINUTES);
+      ? this.clockPickerService.decrement(MODE_HOURS)
+      : this.clockPickerService.decrement(MODE_MINUTES);
   }
 
   handleMovementDown() {
     return this.clockPickerService.isHoursMode
-      ? this.clockPickerService.decrement(MODE_HOURS)
-      : this.clockPickerService.decrement(MODE_MINUTES);
+      ? this.clockPickerService.increment(MODE_HOURS)
+      : this.clockPickerService.increment(MODE_MINUTES);
   }
 
   handleItemChange(item: number) {

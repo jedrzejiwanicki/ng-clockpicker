@@ -1,7 +1,7 @@
 ## Demo 
 
 <p align="center">
-  <img src="https://media.giphy.com/media/CjUSTAGel0hLaJwxDc/giphy.gif">
+  <img src="https://media.giphy.com/media/65K5OtNGknogxzoYsf/giphy.gif">
 </p>
 
 
@@ -89,9 +89,36 @@ export class AppComponent {
 ### Config:
 ```typescript
 export interface ClockPickerConfig {
-  wrapperClassName: string;
+  wrapperClassName?: string;
   buttonCancel?: string;
   buttonConfirm?: string;
   closeOnOverlayClick?: boolean;
 }
+```
+
+### Styling:
+
+Customize your clock picker styles by passing `wrapperClassName` to config object.
+
+#### Examples:
+
+```scss
+  .my-class-name .clock-picker__item-button--selected {
+    background-color: $color-primary;
+    color: $color-text-light;
+  }
+  
+  .my-class-name .clock-picker__item-button--selected:hover {
+    background-color: $color-primary;
+    color: $color-text-light;
+  }
+  
+  .my-class-name .clock-picker__clock-face .clock-picker__clock-face__tick {
+    stroke: $color-primary;
+  }
+  
+  .my-class-name .clock-picker__clock-face .clock-picker__clock-face__center {
+    fill: $color-primary;
+  }
+
 ```

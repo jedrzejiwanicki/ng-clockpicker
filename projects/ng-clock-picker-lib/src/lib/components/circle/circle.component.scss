@@ -2,17 +2,23 @@
 
 .clock-picker__circle {
   border-radius: 50%;
-  border: 30px solid darken(#FAFAFA, 3);
-  background-color: darken(#FAFAFA, 3);
+  border: 30px solid $background-color-default;
+  background-color: $background-color-default;
 
   &--minutes {
     @include on-circle(60, 220px, 50px, -90);
 
     ng-circle-button {
-      display: none;
 
-      &:nth-child(5n + 2) {
-        display: block;
+      &:not(:nth-child(5n + 2)) {
+        width: 4px;
+        height: 4px;
+        margin: -2px;
+
+        .clock-picker__item-button {
+          color: transparent;
+          background-color: #fff;
+        }
       }
     }
   }

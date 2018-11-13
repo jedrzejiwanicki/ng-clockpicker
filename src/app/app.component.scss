@@ -1,3 +1,24 @@
 .input {
   font-size: 16px;
 }
+
+$color-primary: teal;
+$color-text-light: white;
+
+.my-class-name .clock-picker__item-button--selected {
+  background-color: $color-primary;
+  color: $color-text-light;
+}
+
+.my-class-name .clock-picker__item-button--selected:hover {
+  background-color: $color-primary;
+  color: $color-text-light;
+}
+
+.my-class-name .clock-picker__clock-face .clock-picker__clock-face__tick {
+  stroke: $color-primary;
+}
+
+.my-class-name .clock-picker__clock-face .clock-picker__clock-face__center {
+  fill: $color-primary;
+}
