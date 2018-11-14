@@ -1,8 +1,0 @@
-@import "../../styles/index";
-
-.clock-picker__circle__swipeable {
-  @include absolute(50%, 50%);
-  @include sizing(200px, 200px);
-
-  transform: translate(-50%, -50%);
-}

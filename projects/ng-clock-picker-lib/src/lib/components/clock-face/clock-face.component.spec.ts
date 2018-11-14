@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClockFaceComponent } from './clock-face.component';
 import { ClockPickerService } from '../../services/clock-picker.service';
 import { By } from '@angular/platform-browser';
+import { MovementEmitterComponent } from '../movement-emitter/movement-emitter.component';
 
 describe('ClockFaceComponent', () => {
   let component: ClockFaceComponent;
@@ -10,7 +11,7 @@ describe('ClockFaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClockFaceComponent ],
+      declarations: [ ClockFaceComponent, MovementEmitterComponent ],
       providers: [ ClockPickerService ],
     })
     .compileComponents();
@@ -33,8 +34,23 @@ describe('ClockFaceComponent', () => {
     expect(config.hours).toBeTruthy();
   }));
 
-  it('displays only one line', async(() => {
+  it('displays 12 lines', async(() => {
     const line = fixture.debugElement.queryAll(By.css('.clock-picker__clock-face__tick'));
+
+    expect(line.length).toBe(12);
+  }));
+
+  it('click triggers updateValue', async(() => {
+    const line = fixture.debugElement.queryAll(By.css('.clock-picker__clock-face__tick'))[0].nativeElement;
+    const updateValue = spyOn(component, 'updateValue');
+
+    line.dispatchEvent(new Event('click'));
+
+    expect(updateValue).toHaveBeenCalled();
+  }));
+
+  it('displays 1 selected line', async(() => {
+    const line = fixture.debugElement.queryAll(By.css('.clock-picker__clock-face__tick--selected'));
 
     expect(line.length).toBe(1);
   }));

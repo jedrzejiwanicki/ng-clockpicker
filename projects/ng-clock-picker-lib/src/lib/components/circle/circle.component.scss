@@ -10,7 +10,7 @@
 
     ng-circle-button {
 
-      &:not(:nth-child(5n + 3)) {
+      &:not(:nth-child(5n + 2)) {
         width: 4px;
         height: 4px;
         margin: -2px;

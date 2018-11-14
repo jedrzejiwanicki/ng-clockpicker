@@ -12,6 +12,7 @@ import { MODE_MINUTES, MODE_HOURS } from '../../utils/constants';
 })
 export class ClockFaceComponent {
   radius = 90;
+  eventTargetEmitterConstraint: { new(): SVGLineElement } = SVGLineElement;
   center: CentralPointCoordinates = { x1: this.radius, y1: this.radius };
 
   constructor(private clockPickerService: ClockPickerService) { }
@@ -33,6 +34,20 @@ export class ClockFaceComponent {
 
   isSelected(item: number): boolean {
     return this.selected[this.mode] === item;
+  }
+
+  updateValue(value: number) {
+    if (this.clockPickerService.isHoursMode) {
+      this.clockPickerService.setHours(value);
+    } else {
+      this.clockPickerService.setMinutes(value);
+    }
+  }
+
+  handleElementEmitter(target: SVGLineElement) {
+    const value: string = target.innerHTML;
+
+    this.updateValue(Number(value));
   }
 
 }

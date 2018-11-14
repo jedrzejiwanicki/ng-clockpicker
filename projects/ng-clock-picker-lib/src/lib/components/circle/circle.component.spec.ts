@@ -5,7 +5,7 @@ import { ClockPickerService } from '../../services/clock-picker.service';
 import { CircleButtonComponent } from '../circle-button/circle-button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClockFaceComponent } from '../clock-face/clock-face.component';
-import { SwipeControlComponent } from '../swipe-control/swipe-control.component';
+import { MovementEmitterComponent } from '../movement-emitter/movement-emitter.component';
 
 describe('CircleComponent', () => {
   let component: CircleComponent;
@@ -14,7 +14,7 @@ describe('CircleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ BrowserAnimationsModule ],
-      declarations: [ CircleComponent, CircleButtonComponent, ClockFaceComponent, SwipeControlComponent ],
+      declarations: [ CircleComponent, CircleButtonComponent, ClockFaceComponent, MovementEmitterComponent],
       providers: [ClockPickerService]
     })
     .compileComponents();
