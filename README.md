@@ -1,7 +1,7 @@
 [![CircleCI](https://circleci.com/gh/jedrzejiwanicki/ng-clockpicker/tree/master.svg?style=svg)](https://circleci.com/gh/jedrzejiwanicki/ng-clockpicker/tree/master)
 
 <p align="center">
-  <img src="https://media.giphy.com/media/65K5OtNGknogxzoYsf/giphy.gif">
+  <img src="https://media.giphy.com/media/nlYGE0dAam6plYGdS7/giphy.gif">
 </p>
 
 
