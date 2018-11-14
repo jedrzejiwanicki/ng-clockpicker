@@ -40,15 +40,6 @@ describe('ClockFaceComponent', () => {
     expect(line.length).toBe(12);
   }));
 
-  it('click triggers updateValue', async(() => {
-    const line = fixture.debugElement.queryAll(By.css('.clock-picker__clock-face__tick'))[0].nativeElement;
-    const updateValue = spyOn(component, 'updateValue');
-
-    line.dispatchEvent(new Event('click'));
-
-    expect(updateValue).toHaveBeenCalled();
-  }));
-
   it('displays 1 selected line', async(() => {
     const line = fixture.debugElement.queryAll(By.css('.clock-picker__clock-face__tick--selected'));
 

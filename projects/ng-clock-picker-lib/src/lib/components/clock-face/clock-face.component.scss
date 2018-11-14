@@ -3,6 +3,7 @@
 .clock-picker__clock-face {
   @include absolute(50%, 50%);
 
+  user-select: none;
   transform: translate(-50%,-50%);
   margin: 0;
   width: 180px;
@@ -10,8 +11,10 @@
   z-index: 100;
 
   &__tick {
+    user-select: none;
+    z-index: 10;
     stroke: transparent;
-    stroke-width: 5;
+    stroke-width: 3;
 
     &--selected {
       stroke: white;

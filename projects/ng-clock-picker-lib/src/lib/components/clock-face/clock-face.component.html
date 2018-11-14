@@ -1,25 +1,25 @@
-<ng-movement-emitter
-  [constraintElement]="eventTargetEmitterConstraint"
-  (elementEmitted)="handleElementEmitter($event)">
-  <svg
-    class="clock-picker__clock-face"
-  >
-    <ng-container *ngFor="let face of clockFaceItems[mode]">
-      <line
-        class="clock-picker__clock-face__tick"
-        (click)="updateValue(face.display)"
-        [ngClass]="{'clock-picker__clock-face__tick--selected': isSelected(face.display)}"
-        [attr.x1]="face.x1"
-        [attr.y1]="face.y1"
-        [attr.x2]="face.x2"
-        [attr.y2]="face.y2"
-      >{{face.display}}</line>
-    </ng-container>
-    <circle
-      r="10"
-      [attr.cx]="center.x1"
-      [attr.cy]="center.y1"
-      class="clock-picker__clock-face__center"
-    ></circle>
-  </svg>
-</ng-movement-emitter>
+
+  <ng-movement-emitter
+    [constraintElement]="eventTargetEmitterConstraint"
+    (elementEmitted)="handleElementEmitter($event)">
+    <svg
+      class="clock-picker__clock-face"
+    >
+      <ng-container *ngFor="let face of clockFaceItems[mode]">
+        <line
+          class="clock-picker__clock-face__tick"
+          [ngClass]="{'clock-picker__clock-face__tick--selected': isSelected(face.display)}"
+          [attr.x1]="face.x1"
+          [attr.y1]="face.y1"
+          [attr.x2]="face.x2"
+          [attr.y2]="face.y2"
+        >{{face.display}}</line>
+      </ng-container>
+      <circle
+        r="10"
+        [attr.cx]="center.x1"
+        [attr.cy]="center.y1"
+        class="clock-picker__clock-face__center"
+      ></circle>
+    </svg>
+  </ng-movement-emitter>
