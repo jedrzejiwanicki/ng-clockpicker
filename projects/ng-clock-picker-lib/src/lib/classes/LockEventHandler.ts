@@ -15,7 +15,7 @@ export class LockEventHandler {
   }
 
   handleMove(event: MouseEvent | TouchEvent): void {
-    if (!this.isMoveLocked || event instanceof TouchEvent) {
+    if (!this.isMoveLocked || ('TouchEvent' in window && event instanceof TouchEvent)) {
       this.emitMovement(event);
     }
   }
