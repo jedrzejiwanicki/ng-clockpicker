@@ -2,7 +2,7 @@ import { Observable, Subject } from 'rxjs';
 
 export class LockEventHandler {
   isMoveLocked = true;
-  private eventEmitter$: Subject<MouseEvent | TouchEvent> = new Subject<MouseEvent | TouchEvent>();
+  public eventEmitter$: Subject<MouseEvent | TouchEvent> = new Subject<MouseEvent | TouchEvent>();
 
   constructor() {}
 
