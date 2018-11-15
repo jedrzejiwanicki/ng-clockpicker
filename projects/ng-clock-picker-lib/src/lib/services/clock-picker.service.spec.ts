@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 
-import { MODE_HOURS, MODE_MINUTES, HOURS_MODE_AM, HOURS_MODE_PM } from '../utils/constants';
+import { MODE_HOURS, MODE_MINUTES, HOURS_MODE_AM, HOURS_MODE_PM, hours } from '../utils/constants';
 import { ClockPickerService } from './clock-picker.service';
 import { getDateStringFromTime } from '../tests/utils';
 
@@ -67,5 +67,34 @@ describe('ClockPickerService', () => {
     service.setHoursMode(HOURS_MODE_PM);
 
     expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('00:00'));
+  }));
+
+  it('returns correct hours scope', async(() => {
+    expect(service.hoursScope).toBe('12h');
+  }));
+
+  it('returns correct hours scope after udpdate', async(() => {
+    service.setHoursScope('24h');
+
+    expect(service.hoursScope).toBe('24h');
+  }));
+
+  it('returns correct hours within 12h scope', async(() => {
+    service.setHoursScope('12h');
+
+    expect(service.clockValues('hours')).toBe(hours['12h']);
+  }));
+
+  it('returns correct hours within 24h scope', async(() => {
+    service.setHoursScope('24h');
+
+    expect(service.clockValues('hours')).toBe(hours['24h']);
+  }));
+
+  it('sets correct hour after switching scope', async(() => {
+    service.setHours(2);
+    service.setHoursScope('24h');
+
+    expect(service.selected.hours).toBe(14);
   }));
 });
