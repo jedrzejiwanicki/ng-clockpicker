@@ -1,7 +1,7 @@
 <div class="clock-picker__hours-mode-panel">
-  <div [@hoursModeSlide]="hoursMode" class="clock-picker__hours-mode-panel__scrollable">
+  <div [@hoursModeSlide]="selectedIndex" class="clock-picker__hours-mode-panel__scrollable">
     <button
-      *ngFor="let option of hoursModeOptions"
+      *ngFor="let option of options"
       (click)="toggleMode()"
       class="clock-picker__hours-mode-panel__button"
     >{{option.toLowerCase()}}</button>

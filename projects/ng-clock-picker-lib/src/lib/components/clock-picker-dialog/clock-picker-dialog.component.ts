@@ -19,7 +19,7 @@ export class ClockPickerDialogComponent extends DialogComponent implements OnDes
   constructor(public clockPickerService: ClockPickerService) { super(); }
 
   get items() {
-    return config[this.clockPickerService.mode];
+    return this.clockPickerService.clockValues(this.clockPickerService.mode);
   }
 
   get fullTime(): string {

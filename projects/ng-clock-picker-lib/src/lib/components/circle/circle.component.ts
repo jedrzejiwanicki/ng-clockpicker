@@ -18,7 +18,7 @@ export class CircleComponent {
   constructor(public clockPickerService: ClockPickerService) { }
 
   get items(): Array<number> {
-    return config[this.mode];
+    return this.clockPickerService.clockValues(this.mode);
   }
 
   get mode(): string {

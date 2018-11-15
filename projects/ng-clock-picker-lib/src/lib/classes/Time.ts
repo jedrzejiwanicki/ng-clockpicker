@@ -1,7 +1,6 @@
 import { SelectedTime } from '../interfaces';
 import { getDisplayTime } from '../utils/time';
-import { config, MODE_MINUTES, MODE_HOURS } from '../utils/constants';
-import { IncrementHelper } from './IncrementHelper';
+import { config, MODE_MINUTES, MODE_HOURS, hours } from '../utils/constants';
 
 export class Time {
   private _selectedHours: number;
@@ -24,28 +23,16 @@ export class Time {
     this._selectedMinutes = minutes;
   }
 
-  set hours(hours: number) {
-    this._selectedHours = hours;
+  set hours(hour: number) {
+    this._selectedHours = hour;
+  }
+
+  switchHoursScope(currentScope: string, option: string) {
+    this.hours = hours[option][hours[currentScope].indexOf(this.selected.hours)];
   }
 
   getDisplayTime(mode: string): string {
     return getDisplayTime(this.selected.hours, this.selected.minutes, mode);
-  }
-
-  incrementHours() {
-    this.hours = IncrementHelper.getNextValue(config[MODE_HOURS], this.selected.hours, 1);
-  }
-
-  incrementMinutes() {
-    this.minutes = IncrementHelper.getNextValue(config[MODE_MINUTES], this.selected.minutes, 1);
-  }
-
-  decrementHours() {
-    this.hours = IncrementHelper.getNextValue(config[MODE_HOURS], this.selected.hours, -1);
-  }
-
-  decrementMinutes() {
-    this.minutes = IncrementHelper.getNextValue(config[MODE_MINUTES], this.selected.minutes, -1);
   }
 
 }

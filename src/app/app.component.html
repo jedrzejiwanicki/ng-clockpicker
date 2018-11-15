@@ -4,9 +4,16 @@
   <form [formGroup]="form">
     <input
       formControlName="time"
-      placeholder="Pick time"
+      placeholder="Pick time: 24h"
       ngClockPicker
-      [ngClockPickerConfig]="config"/>
+      [ngClockPickerConfig]="configB"
+    />
+    <input
+      formControlName="time"
+      placeholder="Pick time: AM/PM"
+      ngClockPicker
+      [ngClockPickerConfig]="configA"
+    />
   </form>
 </section>
 

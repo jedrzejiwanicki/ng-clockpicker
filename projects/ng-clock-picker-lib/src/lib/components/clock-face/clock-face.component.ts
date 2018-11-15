@@ -19,8 +19,8 @@ export class ClockFaceComponent {
 
   get clockFaceItems(): { minutes: ClockFaceItem[], hours: ClockFaceItem[] } {
     return {
-      minutes: new ClockFaceBuilder(MODE_MINUTES, { radius: this.radius, offset: -45 }).faceControls,
-      hours: new ClockFaceBuilder(MODE_HOURS, { radius: this.radius, offset: 3 }).faceControls
+      minutes: new ClockFaceBuilder(this.clockPickerService.clockValues(this.mode), { radius: this.radius, offset: -45 }).faceControls,
+      hours: new ClockFaceBuilder(this.clockPickerService.clockValues(this.mode), { radius: this.radius, offset: 3 }).faceControls
     };
   }
 

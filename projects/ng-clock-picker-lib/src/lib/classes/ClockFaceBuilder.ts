@@ -2,11 +2,11 @@ import { config } from '../utils/constants';
 import { ClockFaceConfig, CentralPointCoordinates, ClockFaceItem } from '../interfaces';
 
 export class ClockFaceBuilder {
-  mode: string;
+  items: number[];
   clockFaceConfig: ClockFaceConfig;
 
-  constructor(mode: string, clockFaceConfig: ClockFaceConfig) {
-    this.mode = mode;
+  constructor(items: number[], clockFaceConfig: ClockFaceConfig) {
+    this.items = items;
     this.clockFaceConfig = clockFaceConfig;
   }
 
@@ -32,7 +32,7 @@ export class ClockFaceBuilder {
   }
 
   get faceControls(): ClockFaceItem[] {
-    return config[this.mode].map((timeItem: number, _: number, array: number[]) => this.buildFaceControl(timeItem, array));
+    return this.items.map((timeItem: number, _: number, array: number[]) => this.buildFaceControl(timeItem, array));
   }
 
 }

@@ -3,16 +3,16 @@ import { HOURS_MODE_AM, HOURS_MODE_PM } from '../utils/constants';
 
 export const hoursModeSlide: AnimationTriggerMetadata = trigger(
   'hoursModeSlide', [
-    state(HOURS_MODE_AM, style({
+    state('0', style({
       transform: 'translateY(0)'
     })),
-    state(HOURS_MODE_PM, style({
+    state('1', style({
       transform: 'translateY(-19px)'
     })),
-    transition(`${HOURS_MODE_AM} => ${HOURS_MODE_PM}`, [
+    transition(`0 => 1`, [
       animate('200ms ease')
     ]),
-    transition(`${HOURS_MODE_PM} => ${HOURS_MODE_AM}`, [
+    transition(`1 => 0`, [
       animate('200ms ease')
     ]),
   ]

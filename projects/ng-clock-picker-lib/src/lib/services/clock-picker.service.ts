@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES } from '../utils/constants';
+import { HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES, HOURS_SCOPE_12, config } from '../utils/constants';
 import { ClockPickerConfig, SelectedTime } from '../interfaces';
 import { Time } from '../classes/Time';
 
@@ -9,6 +9,7 @@ export class ClockPickerService {
   _config: ClockPickerConfig;
   _mode = MODE_HOURS;
   _hoursMode = HOURS_MODE_AM;
+  _hoursScope = HOURS_SCOPE_12;
   _time: Time = new Time({ hours: 12, minutes: 0 });
 
   get mode(): string {
@@ -35,31 +36,33 @@ export class ClockPickerService {
     return this._time.getDisplayTime(this.hoursMode);
   }
 
-  set config(config: ClockPickerConfig) {
-    this._config = config;
+  set config(clockPickerConfig: ClockPickerConfig) {
+    this._config = clockPickerConfig;
   }
 
   get config(): ClockPickerConfig {
     return this._config;
   }
 
+  get hoursScope(): string {
+    return this._hoursScope;
+  }
+
+  clockValues(mode: string) {
+    return config(this.hoursScope)[mode];
+  }
+
+  setHoursScope(option: string) {
+    this._time.switchHoursScope(this.hoursScope, option)
+    this._hoursScope = option;
+  }
+
   reset(): void {
+    this.setHoursScope(HOURS_SCOPE_12);
     this.setHoursMode(HOURS_MODE_AM);
     this.setMode(MODE_HOURS);
     this.setHours(12);
     this.setMinutes(0);
-  }
-
-  increment(mode: string): void {
-    return mode === MODE_MINUTES
-      ? this._time.incrementMinutes()
-      : this._time.incrementHours();
-  }
-
-  decrement(mode: string): void {
-    return mode === MODE_MINUTES
-      ? this._time.decrementMinutes()
-      : this._time.decrementHours();
   }
 
   setHours(item: number): void {

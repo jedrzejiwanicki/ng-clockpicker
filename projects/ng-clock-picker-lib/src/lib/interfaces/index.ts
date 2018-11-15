@@ -1,5 +1,5 @@
 export interface ClockPickerConfig {
-  wrapperClassName: string;
+  wrapperClassName?: string;
   buttonCancel?: string;
   buttonConfirm?: string;
   closeOnOverlayClick?: boolean;
