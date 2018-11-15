@@ -68,29 +68,4 @@ describe('ClockPickerService', () => {
 
     expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('00:00'));
   }));
-
-  it('increments hours correctly', async(() => {
-    service.increment(MODE_HOURS);
-
-    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('01:00'));
-  }));
-
-  it('decrements hours correctly', async(() => {
-    service.decrement(MODE_HOURS);
-
-    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('11:00'));
-  }));
-
-  it('increments minutes correctly', async(() => {
-    service.setMinutes(59);
-    service.increment(MODE_MINUTES);
-
-    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('12:00'));
-  }));
-
-  it('decrements minutes correctly', async(() => {
-    service.decrement(MODE_MINUTES);
-
-    expect(getDateStringFromTime(service.fullTime)).toBe(getDateStringFromTime('12:59'));
-  }));
 });

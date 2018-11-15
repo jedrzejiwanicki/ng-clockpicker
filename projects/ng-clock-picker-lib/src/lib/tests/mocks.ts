@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import { ClockPickerService } from '../services/clock-picker.service';
-import { SelectedTime } from '../interfaces';
-import { MODE_HOURS } from '../utils/constants';
+import { ClockPickerConfig, SelectedTime } from '../interfaces';
+import { MODE_HOURS, defaultConfig } from '../utils/constants';
 
 @Injectable()
 export class MockElementRef {
@@ -23,4 +23,6 @@ export class MockClockPickerService {
   get mode(): string { return MODE_HOURS; }
   setMode(m: string): void {}
   get selected(): SelectedTime { return { hours: 10, minutes: 1 }; }
+  get config(): ClockPickerConfig { return defaultConfig; };
+  clockValues(): number[] { return []; };
 }
