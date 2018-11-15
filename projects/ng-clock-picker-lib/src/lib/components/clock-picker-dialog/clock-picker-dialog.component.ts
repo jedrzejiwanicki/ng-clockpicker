@@ -6,6 +6,7 @@ import { ClockPickerService } from '../../services/clock-picker.service';
 import {
   config,
 } from '../../utils/constants';
+import { ClockPickerConfig } from '../../interfaces';
 
 @Component({
   selector: 'ng-clock-picker-dialog',
@@ -25,6 +26,10 @@ export class ClockPickerDialogComponent extends DialogComponent implements OnDes
     return this.clockPickerService.fullTime;
   }
 
+  get config(): ClockPickerConfig {
+    return this.clockPickerService.config;
+  }
+
   handleClose(): void {
     this.close(this.fullTime);
   }
@@ -36,7 +41,7 @@ export class ClockPickerDialogComponent extends DialogComponent implements OnDes
   handleOverlayClick(event: Event): void {
     event.stopPropagation();
 
-    if (this.closeOnOverlayClick) {
+    if (this.config.closeOnOverlayClick) {
       this.cancel();
     }
   }

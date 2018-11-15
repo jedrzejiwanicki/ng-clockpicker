@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { HOURS_MODE_AM, MODE_HOURS, MODE_MINUTES } from '../utils/constants';
-import { SelectedTime } from '../interfaces';
+import { ClockPickerConfig, SelectedTime } from '../interfaces';
 import { Time } from '../classes/Time';
 
 @Injectable()
 export class ClockPickerService {
+  _config: ClockPickerConfig;
   _mode = MODE_HOURS;
   _hoursMode = HOURS_MODE_AM;
   _time: Time = new Time({ hours: 12, minutes: 0 });
@@ -32,6 +33,14 @@ export class ClockPickerService {
 
   get fullTime(): string {
     return this._time.getDisplayTime(this.hoursMode);
+  }
+
+  set config(config: ClockPickerConfig) {
+    this._config = config;
+  }
+
+  get config(): ClockPickerConfig {
+    return this._config;
   }
 
   reset(): void {

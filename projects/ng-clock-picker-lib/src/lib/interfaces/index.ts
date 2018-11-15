@@ -3,6 +3,7 @@ export interface ClockPickerConfig {
   buttonCancel?: string;
   buttonConfirm?: string;
   closeOnOverlayClick?: boolean;
+  is24?: boolean;
 }
 
 export interface SelectedTime {

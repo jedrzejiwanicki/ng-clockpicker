@@ -1,4 +1,4 @@
-<div [ngClass]="wrapperClassName">
+<div [ngClass]="config.wrapperClassName">
   <div class="clock-picker__overlay" (click)="handleOverlayClick($event)"></div>
   <div class="clock-picker__wrapper">
     <nav class="clock-picker__nav">
@@ -12,13 +12,13 @@
         class="clock-picker__footer__dialog-control-button"
         (click)="cancel()"
       >
-        {{buttonClose}}
+        {{config.buttonCancel}}
       </button>
       <button
         class="clock-picker__footer__dialog-control-button"
         (click)="handleClose()"
       >
-        {{buttonConfirm}}
+        {{config.buttonConfirm}}
       </button>
     </footer>
   </div>
