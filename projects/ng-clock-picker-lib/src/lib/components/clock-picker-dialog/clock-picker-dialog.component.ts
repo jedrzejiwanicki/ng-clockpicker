@@ -15,15 +15,15 @@ import { ClockPickerConfig } from '../../interfaces';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class ClockPickerDialogComponent extends DialogComponent implements OnDestroy {
+export class ClockPickerDialogComponent extends DialogComponent {
   constructor(public clockPickerService: ClockPickerService) { super(); }
 
   get items() {
-    return this.clockPickerService.clockValues(this.clockPickerService.mode);
+    return this.clockPickerService.clockValues(this.clockPickerService.Time.Mode.mode);
   }
 
   get fullTime(): string {
-    return this.clockPickerService.fullTime;
+    return this.clockPickerService.Time.displayTime;
   }
 
   get config(): ClockPickerConfig {
@@ -47,16 +47,12 @@ export class ClockPickerDialogComponent extends DialogComponent implements OnDes
   }
 
   handleItemChange(item: number) {
-    if (this.clockPickerService.isHoursMode) {
-      this.clockPickerService.setHours(item);
-      this.clockPickerService.setModeToMinutes();
+    if (this.clockPickerService.Time.Mode.isModeHours) {
+      this.clockPickerService.Time.hours = item;
+      this.clockPickerService.Time.Mode.setModeToMinutes();
     } else {
-      this.clockPickerService.setMinutes(item);
+      this.clockPickerService.Time.minutes = item;
       this.close(this.fullTime);
     }
-  }
-
-  ngOnDestroy() {
-    this.clockPickerService.reset();
   }
 }

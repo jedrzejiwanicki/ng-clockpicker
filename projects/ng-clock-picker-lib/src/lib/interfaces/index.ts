@@ -4,11 +4,19 @@ export interface ClockPickerConfig {
   buttonConfirm?: string;
   closeOnOverlayClick?: boolean;
   is24?: boolean;
+  initialValue?: string;
 }
 
 export interface SelectedTime {
   hours: number;
   minutes: number;
+}
+
+export interface TimeConfig {
+  hours: number;
+  minutes: number;
+  is24: boolean;
+  scope: string;
 }
 
 export interface ClockFaceConfig {

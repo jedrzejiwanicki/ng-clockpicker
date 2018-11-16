@@ -22,6 +22,7 @@ export class ClockPickerDialogService {
 
   public showClockPickerDialog(config?: ClockPickerConfig): Observable<any> {
     this.clockPickerService.config = { ...defaultConfig, ...config };
+    this.clockPickerService.init();
     return new Observable((subscriber) => this.dynamicComponentsService.loadDynamicComponent(
       ClockPickerDialogComponent,
       this.viewContainerRef,

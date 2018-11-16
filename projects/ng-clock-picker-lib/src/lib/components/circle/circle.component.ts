@@ -22,11 +22,11 @@ export class CircleComponent {
   }
 
   get mode(): string {
-    return this.clockPickerService.mode;
+    return this.clockPickerService.Time.Mode.mode;
   }
 
   get selected(): SelectedTime {
-    return this.clockPickerService.selected;
+    return this.clockPickerService.Time.selected;
   }
 
   isSelected(item: number): boolean {

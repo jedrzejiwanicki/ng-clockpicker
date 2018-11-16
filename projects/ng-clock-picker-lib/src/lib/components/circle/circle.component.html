@@ -2,8 +2,8 @@
   [@scaleIn]="mode"
   class="clock-picker__circle"
   [ngClass]="{
-    'clock-picker__circle--minutes': clockPickerService.isMinutesMode,
-    'clock-picker__circle--hours': clockPickerService.isHoursMode
+    'clock-picker__circle--minutes': clockPickerService.Time.Mode.isModeMinutes,
+    'clock-picker__circle--hours': clockPickerService.Time.Mode.isModeHours
   }">
   <ng-clock-face></ng-clock-face>
   <ng-circle-button

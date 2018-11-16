@@ -15,14 +15,11 @@ export const config = (hoursScope: string) => ({
   minutes: Array(60).fill(0, 0, 60).map((_, i) => i),
 });
 
-export const defaults = {
-  hours: 12,
-  monutes: 0,
-};
-
 export const defaultConfig: ClockPickerConfig = {
   buttonConfirm: 'Confirm',
   buttonCancel: 'Cancel',
+  initialValue: '12:00',
+  is24: false,
 };
 
 export const MODE_MINUTES = 'minutes';
@@ -31,3 +28,10 @@ export const HOURS_MODE_AM = 'AM';
 export const HOURS_MODE_PM = 'PM';
 export const HOURS_SCOPE_24 = '24h';
 export const HOURS_SCOPE_12 = '12h';
+
+export const defaults = {
+  hours: 12,
+  minutes: 0,
+  scope: HOURS_SCOPE_12,
+  is24: false,
+};

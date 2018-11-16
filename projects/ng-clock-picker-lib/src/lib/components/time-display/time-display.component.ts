@@ -1,7 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 
 import { convertToTimeFormat } from '../../utils/time';
-import { MODE_HOURS, MODE_MINUTES} from '../../utils/constants';
 import { ClockPickerService } from '../../services/clock-picker.service';
 
 @Component({
@@ -15,26 +14,26 @@ export class TimeDisplayComponent {
   constructor(public clockPickerService: ClockPickerService) { }
 
   get displayHours(): string {
-    return convertToTimeFormat(this.clockPickerService.selected.hours);
+    return convertToTimeFormat(this.clockPickerService.Time.selected.hours);
   }
 
   get displayMinutes(): string {
-    return convertToTimeFormat(this.clockPickerService.selected.minutes);
+    return convertToTimeFormat(this.clockPickerService.Time.selected.minutes);
   }
 
   get isHoursMode(): boolean {
-    return this.clockPickerService.isHoursMode;
+    return this.clockPickerService.Time.Mode.isModeHours;
   }
 
   get hoursMode(): string {
-    return this.clockPickerService.hoursMode;
+    return this.clockPickerService.Time.HoursMode.value;
   }
 
   handleMinutesClick(): void {
-    this.clockPickerService.setMode(MODE_MINUTES);
+    this.clockPickerService.Time.Mode.setModeToMinutes();
   }
 
   handleHoursClick(): void {
-    this.clockPickerService.setMode(MODE_HOURS);
+    this.clockPickerService.Time.Mode.setModeToHours();
   }
 }

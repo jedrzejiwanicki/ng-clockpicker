@@ -15,11 +15,11 @@ export class HoursModePanelComponent implements OnInit {
   hoursScopeOptions: string[] = [HOURS_SCOPE_12, HOURS_SCOPE_24];
 
   get hoursMode(): string {
-    return this.clockPickerService.hoursMode;
+    return this.clockPickerService.Time.HoursMode.value;
   }
 
   get hoursScope(): string {
-    return this.clockPickerService.hoursScope;
+    return this.clockPickerService.Time.HoursScope.value;
   }
 
   get selectedIndex(): string {
@@ -35,9 +35,11 @@ export class HoursModePanelComponent implements OnInit {
   }
 
   toggleMode(): void {
-    return this.clockPickerService.config.is24
-      ? this.clockPickerService.setHoursScope(this.hoursScopeOptions.find((item) => item !== this.hoursScope))
-      : this.clockPickerService.setHoursMode(this.hoursModeOptions.find((item) => item !== this.hoursMode));
+    if (this.clockPickerService.config.is24) {
+      this.clockPickerService.Time.HoursScope.value = this.hoursScopeOptions.find((item) => item !== this.hoursScope);
+    } else {
+      this.clockPickerService.Time.HoursMode.value = this.hoursModeOptions.find((item) => item !== this.hoursMode);
+    }
   }
 
   constructor(public clockPickerService: ClockPickerService) { }

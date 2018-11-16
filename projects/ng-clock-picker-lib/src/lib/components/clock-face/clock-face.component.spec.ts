@@ -4,6 +4,7 @@ import { ClockFaceComponent } from './clock-face.component';
 import { ClockPickerService } from '../../services/clock-picker.service';
 import { By } from '@angular/platform-browser';
 import { MovementEmitterComponent } from '../movement-emitter/movement-emitter.component';
+import { MockClockPickerService } from '../../tests/mocks';
 
 describe('ClockFaceComponent', () => {
   let component: ClockFaceComponent;
@@ -12,7 +13,7 @@ describe('ClockFaceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ClockFaceComponent, MovementEmitterComponent ],
-      providers: [ ClockPickerService ],
+      providers: [{ provide: ClockPickerService, useClass: MockClockPickerService }],
     })
     .compileComponents();
   }));

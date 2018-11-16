@@ -52,7 +52,7 @@ describe('ClockPickerDirective', () => {
     input.dispatchEvent(new Event('focus'));
 
     expect(showClockPickerDialog).toHaveBeenCalledWith(
-      directiveInstance.config,
+      { ...directiveInstance.config, initialValue: '' }
     );
   }));
 

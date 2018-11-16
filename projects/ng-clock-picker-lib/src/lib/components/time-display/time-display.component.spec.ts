@@ -31,15 +31,15 @@ describe('TimeDisplayComponent', () => {
   }));
 
   it('should return correct display hours', async(() => {
-    expect(component.displayHours).toBe('10');
+    expect(component.displayHours).toBe('12');
   }));
 
   it('should return correct display minutes', async(() => {
-    expect(component.displayMinutes).toBe('01');
+    expect(component.displayMinutes).toBe('00');
   }));
 
   it('should return correct isHoursMode', async(() => {
-    expect(component.isHoursMode).toBe(false);
+    expect(component.isHoursMode).toBe(true);
   }));
 
   it('hours button click triggers correct action', async(() => {
@@ -58,23 +58,5 @@ describe('TimeDisplayComponent', () => {
     button.click();
 
     expect(handleMinutesClick).toHaveBeenCalled();
-  }));
-
-  it('component method handleMinutesClick triggers setMode on service', async(() => {
-    const service = TestBed.get(ClockPickerService);
-    spyOn(service, 'setMode').and.callThrough();
-
-    component.handleMinutesClick();
-
-    expect(service.setMode).toHaveBeenCalledWith('minutes');
-  }));
-
-  it('component method handleHoursClick triggers setMode on service', async(() => {
-    const service = TestBed.get(ClockPickerService);
-    spyOn(service, 'setMode').and.callThrough();
-
-    component.handleHoursClick();
-
-    expect(service.setMode).toHaveBeenCalledWith('hours');
   }));
 });

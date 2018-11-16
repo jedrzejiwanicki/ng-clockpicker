@@ -21,11 +21,13 @@ export class ClockPickerDirective extends AbstractValueAccessor implements OnIni
 
   @HostListener('focus', ['$event'])
   onFocus(event): void {
+    const initialValue =  this.elementRef.nativeElement.value;
+
     event.preventDefault();
     this.elementRef.nativeElement.blur();
 
     this.clockPickerDialogService
-      .showClockPickerDialog(this.ngClockPickerConfig)
+      .showClockPickerDialog({ ...this.ngClockPickerConfig, initialValue })
       .subscribe((data: string) => {
         if (data) {
           this.elementRef.nativeElement.value = data;

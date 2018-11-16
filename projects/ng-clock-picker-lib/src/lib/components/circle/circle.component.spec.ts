@@ -6,6 +6,7 @@ import { CircleButtonComponent } from '../circle-button/circle-button.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClockFaceComponent } from '../clock-face/clock-face.component';
 import { MovementEmitterComponent } from '../movement-emitter/movement-emitter.component';
+import { MockClockPickerService } from '../../tests/mocks';
 
 describe('CircleComponent', () => {
   let component: CircleComponent;
@@ -15,7 +16,7 @@ describe('CircleComponent', () => {
     TestBed.configureTestingModule({
       imports: [ BrowserAnimationsModule ],
       declarations: [ CircleComponent, CircleButtonComponent, ClockFaceComponent, MovementEmitterComponent],
-      providers: [ClockPickerService]
+      providers: [ { provide: ClockPickerService, useClass: MockClockPickerService }]
     })
     .compileComponents();
   }));

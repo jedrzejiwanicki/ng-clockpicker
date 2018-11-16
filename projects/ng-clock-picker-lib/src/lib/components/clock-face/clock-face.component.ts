@@ -25,11 +25,11 @@ export class ClockFaceComponent {
   }
 
   get mode(): string {
-    return this.clockPickerService.mode;
+    return this.clockPickerService.Time.Mode.mode;
   }
 
   get selected(): SelectedTime {
-    return this.clockPickerService.selected;
+    return this.clockPickerService.Time.selected;
   }
 
   isSelected(item: number): boolean {
@@ -37,10 +37,10 @@ export class ClockFaceComponent {
   }
 
   updateValue(value: number) {
-    if (this.clockPickerService.isHoursMode) {
-      this.clockPickerService.setHours(value);
+    if (this.clockPickerService.Time.Mode.isModeHours) {
+      this.clockPickerService.Time.hours = value;
     } else {
-      this.clockPickerService.setMinutes(value);
+      this.clockPickerService.Time.minutes = value;
     }
   }
 
