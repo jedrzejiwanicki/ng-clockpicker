@@ -97,6 +97,7 @@ export interface ClockPickerConfig {
   buttonCancel?: string;
   buttonConfirm?: string;
   closeOnOverlayClick?: boolean;
+  initialValue?: string;
   is24?: boolean; 
 }
 ```

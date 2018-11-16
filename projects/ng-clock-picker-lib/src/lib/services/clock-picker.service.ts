@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { config, defaultConfig } from '../utils/constants';
 import { parseTimeString } from '../utils/time';
-import { ClockPickerConfig } from '../interfaces';
+import { ClockPickerConfig, TimeConfig } from '../interfaces';
 import { Time } from '../classes/Time';
 
 @Injectable()
@@ -12,8 +12,7 @@ export class ClockPickerService {
 
   init(): void {
     const { initialValue, is24 } = this.config;
-
-    this._time = new Time({ ...parseTimeString(initialValue), is24 });
+    this._time = new Time(<TimeConfig>{ ...parseTimeString(initialValue), is24 });
   }
 
   get Time(): Time {

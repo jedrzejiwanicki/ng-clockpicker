@@ -27,7 +27,7 @@ export class ClockPickerDirective extends AbstractValueAccessor implements OnIni
     this.elementRef.nativeElement.blur();
 
     this.clockPickerDialogService
-      .showClockPickerDialog({ ...this.ngClockPickerConfig, initialValue })
+      .showClockPickerDialog({ initialValue, ...this.ngClockPickerConfig })
       .subscribe((data: string) => {
         if (data) {
           this.elementRef.nativeElement.value = data;
