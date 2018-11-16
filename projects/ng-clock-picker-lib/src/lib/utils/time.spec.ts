@@ -1,7 +1,8 @@
 import { async } from '@angular/core/testing';
 
-import { convertToTimeFormat, getTime } from './time';
+import { convertToTimeFormat, getDisplayTime } from './time';
 import { getDateStringFromTime } from '../tests/utils';
+import { HoursMode } from '../classes/HoursMode';
 
 describe('convertToTimeFormat', () => {
   it('returns correct values', async(() => {
@@ -15,9 +16,9 @@ describe('convertToTimeFormat', () => {
 
 describe('getTime', () => {
   it('returns correct values', async(() => {
-    expect(getDateStringFromTime(getTime(10, 10, 'PM'))).toBe(getDateStringFromTime('22:10'));
-    expect(getDateStringFromTime(getTime(10, 10, 'AM'))).toBe(getDateStringFromTime('10:10'));
-    expect(getDateStringFromTime(getTime(5, 20, 'PM'))).toBe(getDateStringFromTime('17:20'));
-    expect(getDateStringFromTime(getTime(5, 10, 'AM'))).toBe(getDateStringFromTime('05:10'));
+    expect(getDateStringFromTime(getDisplayTime(10, 10, new HoursMode('24h'), false))).toBe(getDateStringFromTime('22:10'));
+    expect(getDateStringFromTime(getDisplayTime(10, 10, new HoursMode('12h'), false))).toBe(getDateStringFromTime('10:10'));
+    expect(getDateStringFromTime(getDisplayTime(5, 20, new HoursMode('24h'), false))).toBe(getDateStringFromTime('17:20'));
+    expect(getDateStringFromTime(getDisplayTime(5, 10, new HoursMode('12h'), false))).toBe(getDateStringFromTime('05:10'));
   }));
 });

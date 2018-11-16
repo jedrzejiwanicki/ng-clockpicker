@@ -35,7 +35,7 @@ export class ClockPickerDialogComponent extends DialogComponent {
   }
 
   cancel(): void {
-    this.close(null); //
+    this.close(null);
   }
 
   handleOverlayClick(event: Event): void {

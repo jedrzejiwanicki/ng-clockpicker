@@ -16,7 +16,7 @@ export class HoursMode {
     this._value = mode;
   }
 
-  setPM(): void {
-    this._value = HOURS_MODE_PM;
+  get isHoursModePM(): boolean {
+    return this.value === HOURS_MODE_PM;
   }
 }

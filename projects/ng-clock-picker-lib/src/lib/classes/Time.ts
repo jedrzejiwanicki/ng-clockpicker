@@ -11,6 +11,7 @@ export class Time {
   private _hoursScope: HoursScope;
   private _hoursMode: HoursMode;
   private _mode: Mode = new Mode();
+  private _is24: boolean;
 
   static getConcurrentScopeValue(hour: number, currentScope: string, nextScope: string): number {
     return hours[nextScope][hours[currentScope].indexOf(hour)];
@@ -21,6 +22,7 @@ export class Time {
   }
 
   private init(initialConfig: TimeConfig ) {
+    this._is24 = initialConfig.is24;
     this._hoursScope = new HoursScope(initialConfig.is24, initialConfig.scope);
     this._hoursMode = new HoursMode(initialConfig.scope);
     this._selectedMinutes = initialConfig.minutes;
@@ -39,6 +41,10 @@ export class Time {
       hours: this._selectedHours,
       minutes: this._selectedMinutes,
     };
+  }
+
+  get is24(): boolean {
+    return this._is24;
   }
 
   get Mode(): Mode {
@@ -62,7 +68,12 @@ export class Time {
   }
 
   get displayTime(): string {
-    return getDisplayTime(this.selected.hours, this.selected.minutes, this._hoursMode.value);
+    return getDisplayTime(
+      this.selected.hours,
+      this.selected.minutes,
+      this.HoursMode,
+      this.is24,
+    );
   }
 
 }

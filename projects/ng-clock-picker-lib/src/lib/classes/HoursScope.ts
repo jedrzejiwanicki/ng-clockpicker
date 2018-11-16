@@ -26,4 +26,8 @@ export class HoursScope {
     this._hoursScopeChangeEmitter.next({ current: this.value, next: scope });
     this._value = scope;
   }
+
+  get isScope24(): boolean {
+    return this.value === HOURS_SCOPE_24;
+  }
 }
