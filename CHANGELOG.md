@@ -1,4 +1,4 @@
-## 1.2.1
+## 1.2.0
  
 #### Feature:
  * Initialize clock picker with input's initial value. 
