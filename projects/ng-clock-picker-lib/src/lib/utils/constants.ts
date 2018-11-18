@@ -19,6 +19,7 @@ export const defaultConfig: ClockPickerConfig = {
   buttonConfirm: 'Confirm',
   buttonCancel: 'Cancel',
   initialValue: '12:00',
+  closeOnOverlayClick: false,
   is24: false,
 };
 

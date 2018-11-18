@@ -1,12 +1,9 @@
-import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 
 import { DialogComponent } from '../../classes/abstract-dialog';
 import { ClockPickerService } from '../../services/clock-picker.service';
-
-import {
-  config,
-} from '../../utils/constants';
 import { ClockPickerConfig } from '../../interfaces';
+import { EnterLeaveComponent } from '../enter-leave/enter-leave.component';
 
 @Component({
   selector: 'ng-clock-picker-dialog',
@@ -16,6 +13,8 @@ import { ClockPickerConfig } from '../../interfaces';
 })
 
 export class ClockPickerDialogComponent extends DialogComponent {
+  @ViewChild('enterLeave') private enterLeaveCmp: EnterLeaveComponent;
+
   constructor(public clockPickerService: ClockPickerService) { super(); }
 
   get items() {
@@ -31,11 +30,11 @@ export class ClockPickerDialogComponent extends DialogComponent {
   }
 
   handleClose(): void {
-    this.close(this.fullTime);
+    this.enterLeaveCmp.requestClose().subscribe(() => this.close(this.fullTime));
   }
 
   cancel(): void {
-    this.close(null);
+    this.enterLeaveCmp.requestClose().subscribe(() => this.close(null));
   }
 
   handleOverlayClick(event: Event): void {

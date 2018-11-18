@@ -10,6 +10,10 @@ import { HoursModePanelComponent } from '../hours-mode-panel/hours-mode-panel.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClockFaceComponent } from '../clock-face/clock-face.component';
 import { MovementEmitterComponent } from '../movement-emitter/movement-emitter.component';
+import { EnterLeaveComponent } from '../enter-leave/enter-leave.component';
+import { of } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { defaultConfig } from '../../utils/constants';
 
 describe('ClockPickerDialogComponent', () => {
   let component: ClockPickerDialogComponent;
@@ -25,6 +29,7 @@ describe('ClockPickerDialogComponent', () => {
         CircleButtonComponent,
         HoursModePanelComponent,
         ClockFaceComponent,
+        EnterLeaveComponent,
         MovementEmitterComponent,
       ],
       providers: [{ provide: ClockPickerService, useClass: MockClockPickerService }]
@@ -40,5 +45,50 @@ describe('ClockPickerDialogComponent', () => {
 
   it('should create', async(() => {
     expect(component).toBeTruthy();
+  }));
+
+  it('closes correctly: cancel', async(() => {
+    const enterLeaveCmp = component.enterLeaveCmp;
+
+    spyOn(enterLeaveCmp, 'requestClose').and.returnValue(of(true));
+    spyOn(component, 'close');
+
+    component.cancel();
+
+    expect(enterLeaveCmp.requestClose).toHaveBeenCalled();
+    expect(component.close).toHaveBeenCalledWith(null);
+  }));
+
+
+  it('closes correctly: handleClose', async(() => {
+    const enterLeaveCmp = component.enterLeaveCmp;
+
+    spyOn(enterLeaveCmp, 'requestClose').and.returnValue(of(true));
+    spyOn(component, 'close');
+
+    component.handleClose();
+
+    expect(enterLeaveCmp.requestClose).toHaveBeenCalled();
+    expect(component.close).toHaveBeenCalledWith(component.fullTime);
+  }));
+
+  it('overlay click triggers cancel when closeOnOverlayClick is true', async(() => {
+    const overlay = fixture.debugElement.query(By.css('.clock-picker__overlay')).nativeElement;
+
+    spyOnProperty(component, 'config', 'get').and.returnValue({ closeOnOverlayClick: true });
+    spyOn(component, 'cancel');
+    overlay.click();
+
+    expect(component.cancel).toHaveBeenCalled();
+  }));
+
+  it('overlay click does not trigger cancel when closeOnOverlayClick is false', async(() => {
+    const overlay = fixture.debugElement.query(By.css('.clock-picker__overlay')).nativeElement;
+
+    spyOnProperty(component, 'config').and.returnValue({ closeOnOverlayClick: false });
+    spyOn(component, 'cancel');
+    overlay.click();
+
+    expect(component.cancel).not.toHaveBeenCalled();
   }));
 });
