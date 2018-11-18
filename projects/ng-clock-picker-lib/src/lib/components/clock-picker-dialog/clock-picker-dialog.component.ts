@@ -13,7 +13,7 @@ import { EnterLeaveComponent } from '../enter-leave/enter-leave.component';
 })
 
 export class ClockPickerDialogComponent extends DialogComponent {
-  @ViewChild('enterLeave') private enterLeaveCmp: EnterLeaveComponent;
+  @ViewChild('enterLeave') public enterLeaveCmp: EnterLeaveComponent;
 
   constructor(public clockPickerService: ClockPickerService) { super(); }
 
