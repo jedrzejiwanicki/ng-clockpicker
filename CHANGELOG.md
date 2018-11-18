@@ -1,3 +1,9 @@
+## 1.2.1
+ 
+#### Feature:
+ * Add fade-in/fade-out animation
+ 
+ 
 ## 1.2.0
  
 #### Feature:
