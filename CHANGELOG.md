@@ -1,3 +1,9 @@
+## 1.2.2
+ 
+#### Fix:
+ * README update
+ 
+
 ## 1.2.1
  
 #### Feature:

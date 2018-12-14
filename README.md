@@ -1,3 +1,5 @@
+### ng-clock-picker
+
 [![CircleCI](https://circleci.com/gh/jedrzejiwanicki/ng-clockpicker/tree/master.svg?style=svg)](https://circleci.com/gh/jedrzejiwanicki/ng-clockpicker/tree/master)
 
 <p align="center">
